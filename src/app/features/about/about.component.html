@@ -1,0 +1,28 @@
+<div class="about bg-dark">
+  <div class="background-overlay"></div>
+
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <div class="border-box top-left"></div>
+        <h2 class="title">About Us</h2>
+        <div class="border-box bottom-right"></div>
+
+        <blockquote class="quote">{{ quote }}</blockquote>
+
+        <div class="person-info">
+          <p class="name">{{ name }}</p>
+          <p class="title">{{ title }}</p>
+        </div>
+
+        <button class="cta-button">Request a Free Consultation</button>
+      </div>
+
+      <div class="about-image">
+        <div class="border-box top-left"></div>
+        <img [src]="imageUrl" alt="Professional lawyer portrait" class="portrait">
+        <div class="border-box bottom-right"></div>
+      </div>
+    </div>
+  </div>
+</div>

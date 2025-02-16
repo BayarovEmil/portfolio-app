@@ -1,0 +1,24 @@
+<div class="hero">
+  <div class="hero-background" [ngStyle]="{'background-image': 'url(' + currentBackground + ')'}">
+    <div class="overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <button (click)="prevSlide()" class="nav-button left" aria-label="Previous slide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="text-container">
+      <h3 class="subheading">We Offer</h3>
+      <h1 class="headline">Affordable and Effective Legal Help</h1>
+      <p class="description">
+        Our expert team of attorneys and consultants will be glad to provide necessary legal assistance.
+      </p>
+      <button class="cta-button">Request a Free Consultation</button>
+    </div>
+
+    <button (click)="nextSlide()" class="nav-button right" aria-label="Next slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>

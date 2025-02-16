@@ -1,0 +1,39 @@
+<section class="contact">
+  <div class="container">
+    <div class="contact-form">
+      <h2>Free Consultation</h2>
+
+      <form (submit)="submitForm()">
+        <div class="form-row">
+          <input type="text" placeholder="Name" [(ngModel)]="formData.name" name="name" required>
+          <input type="text" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" required>
+        </div>
+
+        <div class="form-row">
+          <input type="email" placeholder="Email" [(ngModel)]="formData.email" name="email" required>
+          <select [(ngModel)]="formData.service" name="service" (change)="toggleServiceList()">
+            <option value="">Select Service</option>
+            <option value="Business Law">Business Law</option>
+            <option value="Family Law">Family Law</option>
+            <option value="Civil Litigation">Civil Litigation</option>
+          </select>
+        </div>
+
+        <textarea placeholder="Message" [(ngModel)]="formData.message" name="message" required></textarea>
+
+        <button type="submit">Request a Free Consultation</button>
+      </form>
+
+      <div *ngIf="showServices" class="service-list">
+        <h3>Our Services</h3>
+        <ul>
+          <li *ngFor="let service of services">{{ service }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact-image">
+      <img src="assets/lawyer-woman.jpg" alt="Contact Image">
+    </div>
+  </div>
+</section>

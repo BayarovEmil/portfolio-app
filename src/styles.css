@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-top: 80px; /* Navbar hündürlüyü qədər boşluq */
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  height: 60px; /* Navbar hündürlüyü */
+}
+
+.content {
+  margin-top: 80px; /* Navbar hündürlüyünə uyğun boşluq */
+  padding: 20px;
+  min-height: calc(100vh - 140px); /* Footer və navbar nəzərə alınaraq səhifə balansı */
+}
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Saytı tam ekran edir */
+}
+
+.content {
+  flex: 1; /* Səhifənin əsas kontentini böyüdür və footer-in həmişə aşağıda qalmasını təmin edir */
+}
+
+footer {
+  width: 100%;
+  background: #2A2D3C;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+
+

@@ -1,0 +1,51 @@
+<!-- Üst Panel (Top Bar) -->
+<div class="top-bar">
+  <div class="container">
+    <div class="contact-info">
+      <i class="fas fa-phone"></i> +1 (232) 349-8447
+      <i class="fas fa-envelope"></i> infodemolink.org
+    </div>
+    <div class="social-icons">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-google-plus"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Əsas Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-balance-scale"></i>
+      <span class="brand">LawExpert</span>
+      <span class="free-tag">FREE</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#" (click)="scrollToSection('home')">Home</a></li>
+      <li><a href="#" (click)="scrollToSection('services')">Services</a></li>
+      <li><a href="#" (click)="scrollToSection('blogs')">Blogs</a></li>
+      <li><a href="#" (click)="scrollToSection('about')">About</a></li>
+      <li><a href="#" (click)="scrollToSection('contact')">Contact</a></li>
+    </ul>
+
+    <button class="appointment-btn"><a href="#" (click)="scrollToSection('contact')">Appointment</a></button>
+
+    <!-- Mobil menyu düyməsi -->
+    <button class="menu-btn" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobil Menyu -->
+  <div class="mobile-menu" [class.show]="menuOpen">
+    <ul>
+      <li><a href="#" (click)="scrollToSection('home'); toggleMenu()">Home</a></li>
+      <li><a href="#" (click)="scrollToSection('services'); toggleMenu()">Services</a></li>
+      <li><a href="#" (click)="scrollToSection('blogs'); toggleMenu()">Blogs</a></li>
+      <li><a href="#" (click)="scrollToSection('about'); toggleMenu()">About</a></li>
+      <li><a href="#" (click)="scrollToSection('contact'); toggleMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,112 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* Hero bölməsini kiçilt */
+  overflow: hidden;
+  background: #0C1B33; /* Şəkildəki tünd göy fon */
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
+    filter: brightness(0.8); /* Şəkili bir qədər tünd etmək üçün */
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 27, 51, 0.7); /* Tünd göy overlay */
+  }
+
+  .hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .subheading {
+    font-size: 22px;
+    color: #D4B062;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .headline {
+    font-size: 42px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 18px;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+
+  .cta-button {
+    padding: 12px 24px;
+    border: 2px solid #D4B062;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #D4B062;
+    }
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #D4B062;
+    }
+  }
+
+  .left {
+    left: 20px;
+  }
+
+  .right {
+    right: 20px;
+  }
+}
+
+/* Mobil uyğunluq */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .headline {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
