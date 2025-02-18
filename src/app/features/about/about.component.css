@@ -1,127 +1,46 @@
 .about {
+  height: 100%;
   position: relative;
-  background: #2A2D3C;
-  padding: 100px 0;
-  color: white;
-  overflow: hidden;
-
-  .background-overlay {
-    position: absolute;
-    inset: 0;
-    opacity: 0.1;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    text-align: center;
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      text-align: left;
-    }
-  }
-
-  .about-text {
-    flex: 1;
-    position: relative;
-
-    .title {
-      font-size: 36px;
-      color: white;
-      font-weight: bold;
-      position: relative;
-    }
-
-    .quote {
-      font-size: 20px;
-      font-weight: 300;
-      margin: 20px 0;
-    }
-
-    .person-info {
-      margin-top: 15px;
-
-      .name {
-        font-size: 22px;
-        font-weight: bold;
-        color: #D4B062;
-      }
-
-      .title {
-        font-size: 16px;
-        color: #aaa;
-      }
-    }
-  }
-
-  .cta-button {
-    padding: 12px 24px;
-    border: 2px solid #D4B062;
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-
-    &:hover {
-      background: #D4B062;
-    }
-  }
-
-  .about-image {
-    flex: 1;
-    position: relative;
-
-    .portrait {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  .border-box {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    border: 2px solid #D4B062;
-
-    &.top-left {
-      top: -10px;
-      left: -10px;
-      border-right: none;
-      border-bottom: none;
-    }
-
-    &.bottom-right {
-      bottom: -10px;
-      right: -10px;
-      border-top: none;
-      border-left: none;
-    }
-  }
+  background: url('../../../assets/home-1.jpg') center/cover;
+  /* padding: 100px 0; */
+  height: 420px;
+  /* color: white; */
+  /* overflow: hidden; */
 }
-
-/* Mobil uyğunluq */
-@media (max-width: 768px) {
-  .about {
-    padding: 60px 0;
-  }
-
-  .title {
-    font-size: 28px;
-  }
-
-  .quote {
-    font-size: 18px;
+.about-content{
+  width: 70%;
+  height: 350px;
+  padding: 270px 50px !important;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: #2b2f40;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.about-text,.about-image{flex-basis: 50%;}
+.about-text h3,.person-info p:first-child{font-family: "PT Serif", "Times New Roman", Times, serif;}
+.person-info p:first-child::before{
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: -30px;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+.cta-button {
+  margin-top: 20px;
+  padding: 15px 25px !important;
+  border: 2px solid #D4B062;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: #D4B062;
   }
 }

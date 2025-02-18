@@ -2,25 +2,25 @@
   <div class="background-overlay"></div>
 
   <div class="container">
-    <div class="about-content">
-      <div class="about-text">
+    <div class="about-content justify-center md:justify-between">
+      <div class="about-text flex flex-col items-start justify-center">
         <div class="border-box top-left"></div>
-        <h2 class="title">About Us</h2>
+        <h3 class="!text-[45px] text-white text-center md:text-start whitespace-nowrap">About Us</h3>
         <div class="border-box bottom-right"></div>
 
-        <blockquote class="quote">{{ quote }}</blockquote>
+        <blockquote class="quote text-white text-[.9em] leading-6 mt-[2.5em] text-center md:text-start">{{ quote }}</blockquote>
 
-        <div class="person-info">
-          <p class="name">{{ name }}</p>
-          <p class="title">{{ title }}</p>
+        <div class="person-info flex flex-col md:flex-row mt-[1em] pl-8">
+          <p class="name text-white text-[1.2em] font-bold relative ">{{ name }},</p>
+          <p class="title text-[#666c84] text-[14px] font-[300] italic">{{ title }}</p>
         </div>
 
         <button class="cta-button">Request a Free Consultation</button>
       </div>
 
-      <div class="about-image">
+      <div class="about-image hidden md:flex items-center justify-end ">
         <div class="border-box top-left"></div>
-        <img [src]="imageUrl" alt="Professional lawyer portrait" class="portrait">
+        <img src="../../../assets/aboutimg.jpg"  alt="Professional lawyer portrait" class="portrait">
         <div class="border-box bottom-right"></div>
       </div>
     </div>
