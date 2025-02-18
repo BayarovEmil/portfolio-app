@@ -19,6 +19,8 @@ export class ServiceComponent {
   constructor(private router: Router) {}
 
   navigateToDetail(service: any) {
-    this.router.navigate(['/service-detail', service.id]);
+    this.router.navigate(['/service-detail', service.id]).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Səhifənin yuxarı hissəsinə smooth keçid
+    });
   }
 }

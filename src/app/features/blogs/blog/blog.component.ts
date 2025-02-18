@@ -16,6 +16,8 @@ export class BlogComponent {
   constructor(private router: Router) {}
 
   navigateToDetail(blog: any) {
-    this.router.navigate(['/blog-details', blog.id]);
+    this.router.navigate(['/blog-details', blog.id]).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Səhifənin yuxarı hissəsinə smooth keçid
+    });
   }
 }
