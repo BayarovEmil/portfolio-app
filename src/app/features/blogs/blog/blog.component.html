@@ -10,9 +10,8 @@
       <div
         class="blog-card"
         *ngFor="let blog of blogs"
-        (click)="navigateToDetail(blog)"
-      >
-        <img [src]="blog.image" alt="{{ blog.title }}" class="blog-image">
+        (click)="navigateToDetail(blog)">
+        <img src="../../../../assets/aboutimg.jpg" alt="{{ blog.title }}" class="blog-image">
         <div class="blog-content">
           <p class="blog-author">{{ blog.author }}</p>
           <h3 class="blog-title">{{ blog.title }}</h3>
