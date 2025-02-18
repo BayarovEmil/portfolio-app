@@ -1,0 +1,14 @@
+<div class="wrapper">
+
+  <section class="blog-details">
+    <div class="container">
+      <h2 class="blog-title">{{ blog?.title }}</h2>
+      <p class="blog-author">By {{ blog?.author }}</p>
+      <img [src]="imageUrl" alt="{{ blog?.title }}" class="blog-image">
+      <p class="blog-content">{{ blog?.content }}</p>
+    </div>
+  </section>
+
+  <app-other-blogs [blogId]="blog?.id"></app-other-blogs>
+
+</div>

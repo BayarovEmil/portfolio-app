@@ -1,0 +1,19 @@
+<section class="other-blogs" *ngIf="filteredBlogs.length > 0">
+  <div class="container">
+    <h3 class="section-title">OTHER BLOGS</h3>
+
+    <div class="blogs-grid">
+      <div
+        class="blog-card"
+        *ngFor="let blog of filteredBlogs"
+        (click)="navigateToDetail(blog)"
+      >
+        <img [src]="blog.image" alt="{{ blog.title }}" class="blog-image">
+        <div class="blog-content">
+          <h4 class="blog-title">{{ blog.title }}</h4>
+          <p class="blog-author">{{ blog.author }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

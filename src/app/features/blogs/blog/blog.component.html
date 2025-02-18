@@ -1,0 +1,27 @@
+<section class="blog">
+  <div class="container">
+    <h2 class="section-title">LEGAL ARTICLES AND NEWS</h2>
+    <p class="section-description">
+      In our blog, you can find information about interesting legal research, analysis of changes in legislation,
+      and other legal news.
+    </p>
+
+    <div class="blog-grid">
+      <div
+        class="blog-card"
+        *ngFor="let blog of blogs"
+        (click)="navigateToDetail(blog)"
+      >
+        <img [src]="blog.image" alt="{{ blog.title }}" class="blog-image">
+        <div class="blog-content">
+          <p class="blog-author">{{ blog.author }}</p>
+          <h3 class="blog-title">{{ blog.title }}</h3>
+          <div class="blog-tags">
+            <span class="tag law">Law</span>
+            <span class="tag company">Hüquq şirkəti</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

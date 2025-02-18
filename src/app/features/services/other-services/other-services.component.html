@@ -1,0 +1,18 @@
+<section class="other-services" *ngIf="filteredServices.length > 0">
+  <div class="container">
+    <h3 class="section-title">OTHER SERVICES</h3>
+
+    <div class="services-grid">
+      <div
+        class="service-card"
+        *ngFor="let service of filteredServices"
+        (click)="navigateToDetail(service)"
+      >
+        <div class="service-image" [style.backgroundImage]="'url(' + service.image + ')'"></div>
+        <div class="service-overlay">
+          <h4 class="service-title">{{ service.name }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
