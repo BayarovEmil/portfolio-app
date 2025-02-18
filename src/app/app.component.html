@@ -1,17 +1,27 @@
 <div class="wrapper">
   <app-navbar></app-navbar>
 
-  <!-- Əsas səhifə üçün komponentlər -->
-  <div *ngIf="!isDetailPage">
+  <!-- Əgər istifadəçi `service-detail/:id` səhifəsinə gedibsə -->
+  <div *ngIf="isDetailPage">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Əgər `/about`, `/services`, `/contact`, `/blogs` səhifələrindədirsə -->
+  <div *ngIf="currentPageComponent && !isDetailPage">
+    <app-about *ngIf="currentPageComponent === 'about'"></app-about>
+    <app-services *ngIf="currentPageComponent === 'services'"></app-services>
+    <app-contact *ngIf="currentPageComponent === 'contact'"></app-contact>
+    <app-blog *ngIf="currentPageComponent === 'blogs'"></app-blog>
+  </div>
+
+  <!-- Əks halda ana səhifə komponentləri -->
+  <div *ngIf="!currentPageComponent && !isDetailPage">
     <app-hero id="home"></app-hero>
     <app-services id="services"></app-services>
     <app-about id="about"></app-about>
     <app-contact id="contact"></app-contact>
     <app-blog id="blogs"></app-blog>
   </div>
-
-  <!-- Routing üçün -->
-  <router-outlet></router-outlet>
 
   <app-footer></app-footer>
 </div>
