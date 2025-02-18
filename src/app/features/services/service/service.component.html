@@ -1,0 +1,21 @@
+<section class="services">
+  <div class="container">
+    <h2 class="section-title">OUR SERVICES</h2>
+    <p class="section-description">
+      We provide professional legal services tailored to meet your needs. Explore our expertise.
+    </p>
+
+    <div class="services-grid">
+      <div
+        class="service-card"
+        *ngFor="let service of services"
+        (click)="navigateToDetail(service)"
+      >
+        <div class="service-image" [style.backgroundImage]="'url(' + service.image + ')'"></div>
+        <div class="service-overlay">
+          <h3 class="service-title">{{ service.name }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

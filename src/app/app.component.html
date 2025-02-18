@@ -1,9 +1,17 @@
 <div class="wrapper">
   <app-navbar></app-navbar>
-  <app-hero id="home"></app-hero>
-  <app-service id="services"></app-service>
-  <app-about id="about"></app-about>
-  <app-contact id="contact"></app-contact>
-  <app-blog id="blogs"></app-blog>
+
+  <!-- Əsas səhifə üçün komponentlər -->
+  <div *ngIf="!isDetailPage">
+    <app-hero id="home"></app-hero>
+    <app-services id="services"></app-services>
+    <app-about id="about"></app-about>
+    <app-contact id="contact"></app-contact>
+    <app-blog id="blogs"></app-blog>
+  </div>
+
+  <!-- Routing üçün -->
+  <router-outlet></router-outlet>
+
   <app-footer></app-footer>
 </div>

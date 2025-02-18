@@ -7,11 +7,15 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeroComponent } from './features/hero/hero.component';
-import { ServiceComponent } from './features/service/service.component';
 import {AboutComponent} from "./features/about/about.component";
 import {ContactComponent} from "./features/contact/contact.component";
 import {FormsModule} from "@angular/forms";
-import {BlogComponent} from "./features/blogs/blogs.component";
+import {ServiceComponent} from "./features/services/service/service.component";
+import { ServiceDetailComponent } from './features/services/service-detail/service-detail.component';
+import { OtherServicesComponent } from './features/services/other-services/other-services.component';
+import {BlogComponent} from "./features/blogs/blog/blog.component";
+import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
+import { OtherBlogsComponent } from './features/blogs/other-blogs/other-blogs.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +23,14 @@ import {BlogComponent} from "./features/blogs/blogs.component";
     NavbarComponent,
     FooterComponent,
     HeroComponent,
-    ServiceComponent,
     AboutComponent,
-    ServiceComponent,
     ContactComponent,
-    BlogComponent
+    BlogComponent,
+    ServiceComponent,
+    ServiceDetailComponent,
+    OtherServicesComponent,
+    BlogDetailsComponent,
+    OtherBlogsComponent
   ],
   imports: [
     BrowserModule,
