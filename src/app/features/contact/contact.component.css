@@ -1,105 +1,29 @@
-.contact {
-  background: #f8f8f8;
-  padding: 160px 0;
-
-  .container {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    gap: 50px;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
+.container{
+  padding: 140px 50px 0 50px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact-form h3{font-family: "PT Serif", "Times New Roman", Times, serif;;}
+.cta-button {
+  margin: 20px 0;
+  padding: 15px 40px !important;
+  border: 2px solid #D4B062;
+  background: #D4B062;
+  color: white;
+  font-size: 16px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+  border: 2px solid #B49465;
+    background: #B49465;
   }
-
-  .contact-form {
-    flex: 1;
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
-    h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 15px;
-
-      input, select {
-        flex: 1;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-    }
-
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-    }
-
-    button {
-      background: #c19b5b;
-      color: white;
-      padding: 12px;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        background: #a9834a;
-      }
-    }
-
-    .service-list {
-      margin-top: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
-      h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-
-        li {
-          padding: 5px 0;
-        }
-      }
-    }
-  }
-
-  .contact-image {
-    flex: 1;
-    text-align: right;
-
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 768px) {
-      text-align: center;
-    }
+}
+@media only screen and (min-width:768px) {
+  .container{
+    width: 90%;
   }
 }
