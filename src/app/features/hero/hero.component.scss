@@ -32,35 +32,53 @@
   }
 
   .subheading {
-    font-size: 22px;
+    position: relative;
+    font-size: 2.2em;
     color: #D4B062;
     font-weight: bold;
+    font-family: sans;
     margin-bottom: 10px;
   }
 
   .headline {
-    font-size: 42px;
+    font-size: 2em;
     color: white;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-family: sans;
   }
 
+  .liner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .line{
+    margin-bottom: 10px;
+    background-color: #5D5D68;
+    height: 1px;
+    width: 50px;
+  }
   .description {
-    font-size: 18px;
+    line-height: 1.2;
+    max-width: 650px;
+    font-size: 1.375em;
     color: white;
-    max-width: 600px;
-    margin: 0 auto 30px;
+    font-family: sans;
+    margin-top: 20px;
   }
 
   .cta-button {
-    padding: 12px 24px;
+    margin-top: 40px;
+    padding: 18px 30px !important;
     border: 2px solid #D4B062;
     background: transparent;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: "Lato", Helvetica, Arial, sans-serif;;
     cursor: pointer;
-    transition: background 0.3s;
-
+    transition: all 0.3s;
     &:hover {
       background: #D4B062;
     }
@@ -92,19 +110,10 @@
 }
 
 /* Mobil uyğunluq */
-@media (max-width: 768px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .headline {
-    font-size: 32px;
-  }
-
-  .description {
-    font-size: 16px;
-  }
-
+@media (min-width: 768px) {
+  .hero {height: 60vh;}
+  .description {font-size: 16px;}
+  .headline {font-size: 3.125em !important;}
   .cta-button {
     font-size: 14px;
     padding: 10px 20px;
