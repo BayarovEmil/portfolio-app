@@ -1,9 +1,8 @@
-<!-- Üst Panel (Top Bar) -->
-<div class="top-bar">
+<div class="top-bar hidden lg:block">
   <div class="container">
-    <div class="contact-info">
-      <i class="fas fa-phone"></i> +1 (232) 349-8447
-      <i class="fas fa-envelope"></i> infodemolink.org
+    <div class="contact-info flex items-center justify-center gap-5">
+      <div><i class="text-[#CCA876] fas fa-phone "></i><a href="tel:#" class="text-[#9b9b9b] text-[.9em] hover:text-[#CCA876]"> +1 (232) 349-8447</a></div>
+      <div><i class="text-[#CCA876] fas fa-envelope"></i><a href="" class="text-[#9b9b9b] text-[.9em] hover:text-[#CCA876]">infodemolink.org</a> </div>
     </div>
     <div class="social-icons">
       <i class="fab fa-facebook"></i>
@@ -17,20 +16,22 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <i class="fas fa-balance-scale"></i>
-      <span class="brand">LawExpert</span>
-      <span class="free-tag">FREE</span>
+      <img class="object-cover" src="../../../assets/logo.webp" alt="">
     </div>
-
-    <ul class="nav-links">
-      <li><a href="#" (click)="scrollToSection('home')">Home</a></li>
-      <li><a href="#" (click)="scrollToSection('services')">Services</a></li>
-      <li><a href="#" (click)="scrollToSection('blogs')">Blogs</a></li>
-      <li><a href="#" (click)="scrollToSection('about')">About</a></li>
-      <li><a href="#" (click)="scrollToSection('contact')">Contact</a></li>
-    </ul>
-
-    <button class="appointment-btn"><a href="#" (click)="scrollToSection('contact')">Appointment</a></button>
+    <div class="block lg:hidden">
+      <div id="sss"><i class="fa-solid fa-ellipsis-vertical text-2xl"></i></div>
+      <div></div>
+    </div>
+    <div class=" items-center justify-center gap-5 hidden lg:flex">
+      <ul class="nav-links">
+        <li><a href="#" class="text-[1.1em] text-black font-[500]" id="act" (click)="scrollToSection('home')">Home</a></li>
+        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('services')">Services</a></li>
+        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('blogs')">Blogs</a></li>
+        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('about')">About</a></li>
+        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('contact')">Contact</a></li>
+      </ul>
+      <button class="appointment-btn"><a href="#" (click)="scrollToSection('contact')">Appointment</a></button>
+    </div>
 
     <!-- Mobil menyu düyməsi -->
     <button class="menu-btn" (click)="toggleMenu()">
