@@ -20,10 +20,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  transition: all .3s;
+  cursor: pointer;
+}
+.blog-card img{transition: all .3s;}
+.blog-card:hover img{
+  scale: 1.1;
 }
 .blog-img{
   width: 100%;
   height: 300px;
+  overflow: hidden;
 }
 .blog-img img{
   width: 100%;
