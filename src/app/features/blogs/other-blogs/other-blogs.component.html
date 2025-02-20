@@ -8,10 +8,16 @@
         *ngFor="let blog of filteredBlogs"
         (click)="navigateToDetail(blog)"
       >
-        <img [src]="blog.image" alt="{{ blog.title }}" class="blog-image">
+
+          <img src="../../../../assets/aboutimg.jpg" alt="{{ blog.title }}" class="blog-image">
+     
         <div class="blog-content">
-          <h4 class="blog-title">{{ blog.title }}</h4>
           <p class="blog-author">{{ blog.author }}</p>
+          <h4 class="blog-title h-[30px] !text-[1em]">{{ blog.title }}</h4>
+          <div class="blog-tags mt-8 overflow-hidden text-ellipsis">
+            <span class="tag law">Law</span>
+            <span class="tag company">Hüquq şirkəti</span>
+          </div>
         </div>
       </div>
     </div>
