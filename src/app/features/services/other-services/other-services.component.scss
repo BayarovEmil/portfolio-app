@@ -1,11 +1,11 @@
 .other-services {
   padding: 40px 20px;
-  background: #ffffff;
+
   text-align: center;
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    // width: 80%;
+    margin: auto;
   }
 
   .section-title {
@@ -16,11 +16,10 @@
   }
 
   .services-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: auto ;
+    gap: 50px;
 
     .service-card {
       position: relative;
@@ -66,16 +65,8 @@
     }
   }
 }
-
-/* Mobil uyğunluq */
-@media (max-width: 992px) {
+@media only screen and (min-width : 768px) {
   .services-grid {
-    grid-template-columns: repeat(2, 1fr); // 2 sütunlu grid
-  }
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(1, 1fr); // 1 sütunlu grid
+    grid-template-columns: auto auto auto auto auto !important;
   }
 }
