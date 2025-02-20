@@ -8,7 +8,7 @@
         *ngFor="let service of filteredServices"
         (click)="navigateToDetail(service)"
       >
-        <div class="service-image" [style.backgroundImage]="'url(' + service.image + ')'"></div>
+        <div class="service-image" style="background: url(../../../../assets/home-1.jpg) center/cover;"></div>
         <div class="service-overlay">
           <h4 class="service-title">{{ service.name }}</h4>
         </div>
