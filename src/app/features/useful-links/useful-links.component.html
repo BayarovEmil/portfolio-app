@@ -1,0 +1,6 @@
+<div class="useful-links">
+  <div *ngFor="let link of links" class="link-item" (click)="openLink(link.url)">
+    <img [src]="link.logo" [alt]="link.name" class="logo" />
+    <p>{{ link.name }}</p>
+  </div>
+</div>
