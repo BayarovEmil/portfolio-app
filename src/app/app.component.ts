@@ -27,6 +27,13 @@ export class AppComponent {
   //     }
   //   });
   // }
+  governmentLinks = [
+    { name: 'Universal', logo: 'assets/logo.webp', url: 'https://universal.az' },
+    { name: 'Greatwall Drilling', logo: 'assets/logo.webp', url: 'https://greatwalldrilling.com' },
+    { name: 'Azərpambıq', logo: 'assets/logo.webp', url: 'https://azerpambiq.az' },
+    { name: 'CNLC', logo: 'assets/logo.webp', url: 'https://cnlc.com' }
+  ];
+
 
   setCurrentComponent(url: string) {
     const routeMap: { [key: string]: string } = {

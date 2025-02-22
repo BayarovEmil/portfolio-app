@@ -16,6 +16,7 @@ import { OtherServicesComponent } from './features/services/other-services/other
 import {BlogComponent} from "./features/blogs/blog/blog.component";
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { OtherBlogsComponent } from './features/blogs/other-blogs/other-blogs.component';
+import { UsefulLinksComponent } from './features/useful-links/useful-links.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OtherBlogsComponent } from './features/blogs/other-blogs/other-blogs.co
     ServiceDetailComponent,
     OtherServicesComponent,
     BlogDetailsComponent,
-    OtherBlogsComponent
+    OtherBlogsComponent,
+    UsefulLinksComponent
   ],
   imports: [
     BrowserModule,
