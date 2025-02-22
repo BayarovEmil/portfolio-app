@@ -20,8 +20,22 @@
       <img class="object-cover" src="../../../assets/logo.webp" alt="">
     </div>
     <div class="block lg:hidden">
-      <div id="sss"><i class="fa-solid fa-ellipsis-vertical text-2xl"></i></div>
-      <div></div>
+      <input type="checkbox" id="mycheckbox" class="hidden">
+      <div id="sss"><label for="mycheckbox"><i class="fa-solid fa-bars text-2xl"></i></label></div>
+
+      <div id="ham-menu" class="w-[80%] !h-screen  top-[100%]  left-[-100%] duration-500 bg-white absolute ">
+        <div class="py-5 px-2">
+          <button class="bars-btn !w-full">
+            Appointment
+          </button>
+        </div>
+        <ul>
+          <li class="bars-list-elem"><a href="" > Home      </a></li>
+          <li class="bars-list-elem"><a href="" > About Us  </a></li>
+          <li class="bars-list-elem"><a href="" > Typography</a></li>
+          <li class="bars-list-elem"><a href="" > Conatcts  </a></li>
+        </ul>
+      </div>
     </div>
     <div class=" items-center justify-center gap-5 hidden lg:flex">
       <ul class="nav-links">
