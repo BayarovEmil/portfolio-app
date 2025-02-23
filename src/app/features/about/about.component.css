@@ -1,6 +1,7 @@
 .about {
   height: 100%;
   position: relative;
+  margin: 100px 0 !important;
   background: url('../../../assets/home-1.jpg') center/cover;
   /* padding: 100px 0; */
   height: 420px;
