@@ -1,24 +1,42 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import {BlogResponse} from "../../../services/models/blog-response";
+import {BlogControllerService} from "../../../services/services/blog-controller.service";
+import {GetById$Params} from "../../../services/fn/blog-controller/get-by-id";
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.scss']
 })
 export class BlogDetailsComponent implements OnInit {
-  blog: any;
-  blogs = [
-    { id: 1, author: 'Fuad Gashamov', title: 'Introduction to the New Arbitration Law', image: 'assets/images/blog1.jpg', content: 'Detailed article content...' },
-    { id: 2, author: 'Ruslan Bayramov', title: 'Contracts as the all-powerful tool', image: 'assets/images/blog2.jpg', content: 'Detailed article content...' },
-    { id: 3, author: 'Emin Musayev', title: 'Procedure for sale and purchase of shares', image: 'assets/images/blog3.jpg', content: 'Detailed article content...' },
-  ];
+  blog: BlogResponse | null = null;
+  isLoading = true;
+  errorMessage = '';
+
   @Input() imageUrl: string = 'assets/lawyer-portrait.jpg';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private blogService: BlogControllerService) {}
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.blog = this.blogs.find(blog => blog.id === id);
+    if (id) {
+      this.getBlogById(id);
+    }
+  }
+
+  getBlogById(id: number) {
+    const params: GetById$Params = { 'blog-id': id };
+
+    this.blogService.getById(params).subscribe({
+      next: (response) => {
+        this.blog = response;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Blog detaylarını çekerken hata oluştu:', error);
+        this.errorMessage = 'Blog detayları yüklenirken hata oluştu.';
+        this.isLoading = false;
+      }
+    });
   }
 }

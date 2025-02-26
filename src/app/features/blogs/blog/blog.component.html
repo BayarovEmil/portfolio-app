@@ -6,23 +6,29 @@
       and other legal news.
     </p>
 
-    <div class="blog-grid">
-      <div
-        class="blog-card"
-        *ngFor="let blog of blogs"
-        (click)="navigateToDetail(blog)">
-        <div class="blog-img">
-          <img src="../../../../assets/aboutimg.jpg" alt="{{ blog.title }}" class="blog-image">
-        </div>
-        <div class="blog-content">
-          <p class="blog-author">{{ blog.author }}</p>
-          <h3 class="blog-title">{{ blog.title }}</h3>
-          <div class="blog-tags">
-            <span class="tag law">Law</span>
-            <span class="tag company">Hüquq şirkəti</span>
+    <div *ngIf="isLoading; else blogList">
+      <p>Loading blogs...</p>
+    </div>
+
+    <ng-template #blogList>
+      <div class="blog-grid">
+        <div
+          class="blog-card"
+          *ngFor="let blog of blogs"
+          (click)="navigateToDetail(blog)">
+          <div class="blog-img">
+            <img src="../../../../assets/aboutimg.jpg" alt="{{ blog.title }}" class="blog-image">
+          </div>
+          <div class="blog-content">
+            <p class="blog-author">{{ blog.author }}</p>
+            <h3 class="blog-title">{{ blog.title }}</h3>
+            <div class="blog-tags">
+              <span class="tag law">Law</span>
+              <span class="tag company">Hüquq şirkəti</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </div>
 </section>

@@ -17,6 +17,7 @@ import {BlogComponent} from "./features/blogs/blog/blog.component";
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { OtherBlogsComponent } from './features/blogs/other-blogs/other-blogs.component';
 import { UsefulLinksComponent } from './features/useful-links/useful-links.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UsefulLinksComponent } from './features/useful-links/useful-links.compo
     UsefulLinksComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,  // 🔹 ƏLAVƏ OLUNMALIDIR!
     RouterModule,

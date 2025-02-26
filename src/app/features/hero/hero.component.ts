@@ -22,4 +22,12 @@ export class HeroComponent {
     this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
     this.currentBackground = this.slides[this.currentIndex];
   }
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 }
