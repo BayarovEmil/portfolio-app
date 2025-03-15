@@ -20,6 +20,8 @@ import { test1 } from '../fn/admin-controller/test-1';
 import { Test1$Params } from '../fn/admin-controller/test-1';
 import { updateBlog } from '../fn/admin-controller/update-blog';
 import { UpdateBlog$Params } from '../fn/admin-controller/update-blog';
+import { uploadCarCoverPicture } from '../fn/admin-controller/upload-car-cover-picture';
+import { UploadCarCoverPicture$Params } from '../fn/admin-controller/upload-car-cover-picture';
 
 @Injectable({ providedIn: 'root' })
 export class AdminControllerService extends BaseService {
@@ -28,7 +30,7 @@ export class AdminControllerService extends BaseService {
   }
 
   /** Path part for operation `updateBlog()` */
-  static readonly UpdateBlogPath = '/admin/';
+  static readonly UpdateBlogPath = '/admin/blogs';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -53,7 +55,7 @@ export class AdminControllerService extends BaseService {
   }
 
   /** Path part for operation `createBlog()` */
-  static readonly CreateBlogPath = '/admin/';
+  static readonly CreateBlogPath = '/admin/blogs';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -78,7 +80,7 @@ export class AdminControllerService extends BaseService {
   }
 
   /** Path part for operation `deleteBlog()` */
-  static readonly DeleteBlogPath = '/admin/';
+  static readonly DeleteBlogPath = '/admin/blogs';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -99,6 +101,35 @@ export class AdminControllerService extends BaseService {
   deleteBlog(params: DeleteBlog$Params, context?: HttpContext): Observable<void> {
     return this.deleteBlog$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `uploadCarCoverPicture()` */
+  static readonly UploadCarCoverPicturePath = '/admin/cover/{blog-id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `uploadCarCoverPicture()` instead.
+   *
+   * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
+   */
+  uploadCarCoverPicture$Response(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return uploadCarCoverPicture(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `uploadCarCoverPicture$Response()` instead.
+   *
+   * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
+   */
+  uploadCarCoverPicture(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<{
+}> {
+    return this.uploadCarCoverPicture$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
     );
   }
 

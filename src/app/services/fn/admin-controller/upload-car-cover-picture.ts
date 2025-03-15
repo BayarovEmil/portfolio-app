@@ -8,19 +8,20 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { BlogRequest } from '../../models/blog-request';
-import { BlogResponse } from '../../models/blog-response';
 
-export interface UpdateBlog$Params {
-  blogId: number;
-      body: BlogRequest
+export interface UploadCarCoverPicture$Params {
+  'blog-id': number;
+      body?: {
+'file': Blob;
+}
 }
 
-export function updateBlog(http: HttpClient, rootUrl: string, params: UpdateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
-  const rb = new RequestBuilder(rootUrl, updateBlog.PATH, 'put');
+export function uploadCarCoverPicture(http: HttpClient, rootUrl: string, params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+  const rb = new RequestBuilder(rootUrl, uploadCarCoverPicture.PATH, 'post');
   if (params) {
-    rb.query('blogId', params.blogId, {});
-    rb.body(params.body, 'application/json');
+    rb.path('blog-id', params['blog-id'], {});
+    rb.body(params.body, 'multipart/form-data');
   }
 
   return http.request(
@@ -28,9 +29,10 @@ export function updateBlog(http: HttpClient, rootUrl: string, params: UpdateBlog
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<BlogResponse>;
+      return r as StrictHttpResponse<{
+      }>;
     })
   );
 }
 
-updateBlog.PATH = '/admin/blogs';
+uploadCarCoverPicture.PATH = '/admin/cover/{blog-id}';

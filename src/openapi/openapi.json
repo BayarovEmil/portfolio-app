@@ -16,11 +16,11 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8088/api/v1",
+      "url": "http://localhost:8080/api/v1",
       "description": "Local ENV"
     },
     {
-      "url": "http://localhost:8088/api/v1",
+      "url": "https://portfolio-app-backend-production-067f.up.railway.app/api/v1",
       "description": "PROD ENV"
     }
   ],
@@ -30,7 +30,7 @@
     }
   ],
   "paths": {
-    "/admin/": {
+    "/admin/blogs": {
       "put": {
         "tags": [
           "Admin Controller"
@@ -296,6 +296,55 @@
         }
       }
     },
+    "/admin/cover/{blog-id}": {
+      "post": {
+        "tags": [
+          "Admin Controller"
+        ],
+        "operationId": "uploadCarCoverPicture",
+        "parameters": [
+          {
+            "name": "blog-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "file"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/test": {
       "get": {
         "tags": [
@@ -461,6 +510,13 @@
           "viewCount": {
             "type": "integer",
             "format": "int32"
+          },
+          "coverImage": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "byte"
+            }
           }
         }
       },
@@ -534,10 +590,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "lastPage": {
+          "firstPage": {
             "type": "boolean"
           },
-          "firstPage": {
+          "lastPage": {
             "type": "boolean"
           }
         }

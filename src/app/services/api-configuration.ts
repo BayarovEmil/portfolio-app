@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'https://portfolio-app-backend-production.up.railway.app/api/v1';
+  rootUrl: string = 'https://portfolio-app-backend-production-067f.up.railway.app/api/v1';
 }
 
 /**

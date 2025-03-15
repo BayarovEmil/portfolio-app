@@ -4,6 +4,7 @@
 
 export interface BlogResponse {
   author?: string;
+  coverImage?: Array<string>;
   description?: string;
   id?: number;
   text?: string;

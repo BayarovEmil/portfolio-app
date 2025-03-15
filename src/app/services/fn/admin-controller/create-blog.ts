@@ -31,4 +31,4 @@ export function createBlog(http: HttpClient, rootUrl: string, params: CreateBlog
   );
 }
 
-createBlog.PATH = '/admin/';
+createBlog.PATH = '/admin/blogs';

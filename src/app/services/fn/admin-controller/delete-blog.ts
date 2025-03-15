@@ -29,4 +29,4 @@ export function deleteBlog(http: HttpClient, rootUrl: string, params: DeleteBlog
   );
 }
 
-deleteBlog.PATH = '/admin/';
+deleteBlog.PATH = '/admin/blogs';
