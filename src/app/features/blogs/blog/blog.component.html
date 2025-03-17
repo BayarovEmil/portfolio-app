@@ -17,7 +17,7 @@
           *ngFor="let blog of blogs"
           (click)="navigateToDetail(blog)">
           <div class="blog-img">
-            <img src="../../../../assets/aboutimg.jpg" alt="{{ blog.title }}" class="blog-image">
+            <img [src]="blog.coverImage" alt="{{ blog.title }}" class="blog-image">
           </div>
           <div class="blog-content">
             <p class="blog-author">{{ blog.author }}</p>

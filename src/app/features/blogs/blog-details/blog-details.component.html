@@ -11,7 +11,7 @@
 
       <div *ngIf="blog && !isLoading">
         <div class="bd-img w-[40%]">
-          <img [src]="imageUrl" alt="{{ blog.title }}" class="blog-image">
+          <img src="{{ blog.coverImage }}" alt="{{ blog.title }}" class="blog-image">
         </div>
         <div class="bd-content w-[60%]">
           <h2 class="blog-title md:!text-[36px]">{{ blog.title }}</h2>

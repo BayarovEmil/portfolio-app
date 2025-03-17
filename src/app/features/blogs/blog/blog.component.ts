@@ -43,4 +43,6 @@ export class BlogComponent implements OnInit {
       window.scrollTo({ top: 0, behavior: 'smooth' }); // Sayfanın başına geçiş
     });
   }
+
+  protected readonly console = console;
 }
