@@ -8,13 +8,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { BlogResponse } from '../../models/blog-response';
+import { ApiResponseBlogResponse } from '../../models/api-response-blog-response';
 
 export interface GetById$Params {
   'blog-id': number;
 }
 
-export function getById(http: HttpClient, rootUrl: string, params: GetById$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
+export function getById(http: HttpClient, rootUrl: string, params: GetById$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
   const rb = new RequestBuilder(rootUrl, getById.PATH, 'get');
   if (params) {
     rb.path('blog-id', params['blog-id'], {});
@@ -25,7 +25,7 @@ export function getById(http: HttpClient, rootUrl: string, params: GetById$Param
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<BlogResponse>;
+      return r as StrictHttpResponse<ApiResponseBlogResponse>;
     })
   );
 }

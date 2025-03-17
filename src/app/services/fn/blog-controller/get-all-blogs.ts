@@ -8,14 +8,14 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { PageResponseBlogResponse } from '../../models/page-response-blog-response';
+import { ApiResponsePageResponseBlogResponse } from '../../models/api-response-page-response-blog-response';
 
 export interface GetAllBlogs$Params {
   page?: number;
   size?: number;
 }
 
-export function getAllBlogs(http: HttpClient, rootUrl: string, params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponseBlogResponse>> {
+export function getAllBlogs(http: HttpClient, rootUrl: string, params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponsePageResponseBlogResponse>> {
   const rb = new RequestBuilder(rootUrl, getAllBlogs.PATH, 'get');
   if (params) {
     rb.query('page', params.page, {});
@@ -27,7 +27,7 @@ export function getAllBlogs(http: HttpClient, rootUrl: string, params?: GetAllBl
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<PageResponseBlogResponse>;
+      return r as StrictHttpResponse<ApiResponsePageResponseBlogResponse>;
     })
   );
 }

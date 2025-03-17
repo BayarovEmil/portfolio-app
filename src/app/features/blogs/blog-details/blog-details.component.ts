@@ -1,15 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {BlogResponse} from "../../../services/models/blog-response";
-import {BlogControllerService} from "../../../services/services/blog-controller.service";
-import {GetById$Params} from "../../../services/fn/blog-controller/get-by-id";
+import { BlogResponse } from '../../../services/models/blog-response';
+import { BlogControllerService } from '../../../services/services/blog-controller.service';
+import { GetById$Params } from '../../../services/fn/blog-controller/get-by-id';
+import { ApiResponseBlogResponse } from '../../../services/models/api-response-blog-response';
+
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.scss']
 })
 export class BlogDetailsComponent implements OnInit {
-  blog: BlogResponse | null = null;
+  blog: BlogResponse | null = null; // Dəyişəni `null` olaraq tərif edirik
   isLoading = true;
   errorMessage = '';
 
@@ -28,13 +30,17 @@ export class BlogDetailsComponent implements OnInit {
     const params: GetById$Params = { 'blog-id': id };
 
     this.blogService.getById(params).subscribe({
-      next: (response) => {
-        this.blog = response;
+      next: (response: ApiResponseBlogResponse) => {
+        if (response && response.data) {
+          this.blog = response.data; // `data` hissəsini `blog` obyektinə təyin edirik
+        } else {
+          this.errorMessage = 'Blog məlumatı tapılmadı.';
+        }
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Blog detaylarını çekerken hata oluştu:', error);
-        this.errorMessage = 'Blog detayları yüklenirken hata oluştu.';
+        console.error('Blog məlumatı yüklənərkən xəta:', error);
+        this.errorMessage = 'Blog məlumatı yüklənərkən xəta baş verdi.';
         this.isLoading = false;
       }
     });

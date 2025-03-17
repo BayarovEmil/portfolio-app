@@ -11,12 +11,12 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { BlogResponse } from '../models/blog-response';
+import { ApiResponseBlogResponse } from '../models/api-response-blog-response';
+import { ApiResponsePageResponseBlogResponse } from '../models/api-response-page-response-blog-response';
 import { getAllBlogs } from '../fn/blog-controller/get-all-blogs';
 import { GetAllBlogs$Params } from '../fn/blog-controller/get-all-blogs';
 import { getById } from '../fn/blog-controller/get-by-id';
 import { GetById$Params } from '../fn/blog-controller/get-by-id';
-import { PageResponseBlogResponse } from '../models/page-response-blog-response';
 
 @Injectable({ providedIn: 'root' })
 export class BlogControllerService extends BaseService {
@@ -33,7 +33,7 @@ export class BlogControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getById$Response(params: GetById$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
+  getById$Response(params: GetById$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
     return getById(this.http, this.rootUrl, params, context);
   }
 
@@ -43,9 +43,9 @@ export class BlogControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getById(params: GetById$Params, context?: HttpContext): Observable<BlogResponse> {
+  getById(params: GetById$Params, context?: HttpContext): Observable<ApiResponseBlogResponse> {
     return this.getById$Response(params, context).pipe(
-      map((r: StrictHttpResponse<BlogResponse>): BlogResponse => r.body)
+      map((r: StrictHttpResponse<ApiResponseBlogResponse>): ApiResponseBlogResponse => r.body)
     );
   }
 
@@ -58,7 +58,7 @@ export class BlogControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getAllBlogs$Response(params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponseBlogResponse>> {
+  getAllBlogs$Response(params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponsePageResponseBlogResponse>> {
     return getAllBlogs(this.http, this.rootUrl, params, context);
   }
 
@@ -68,9 +68,9 @@ export class BlogControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getAllBlogs(params?: GetAllBlogs$Params, context?: HttpContext): Observable<PageResponseBlogResponse> {
+  getAllBlogs(params?: GetAllBlogs$Params, context?: HttpContext): Observable<ApiResponsePageResponseBlogResponse> {
     return this.getAllBlogs$Response(params, context).pipe(
-      map((r: StrictHttpResponse<PageResponseBlogResponse>): PageResponseBlogResponse => r.body)
+      map((r: StrictHttpResponse<ApiResponsePageResponseBlogResponse>): ApiResponsePageResponseBlogResponse => r.body)
     );
   }
 

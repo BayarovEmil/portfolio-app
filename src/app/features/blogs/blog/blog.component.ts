@@ -4,6 +4,7 @@ import {GetAllBlogs$Params} from "../../../services/fn/blog-controller/get-all-b
 import {BlogControllerService} from "../../../services/services/blog-controller.service";
 import {PageResponseBlogResponse} from "../../../services/models/page-response-blog-response";
 import {BlogResponse} from "../../../services/models/blog-response";
+import {ApiResponsePageResponseBlogResponse} from "../../../services/models/api-response-page-response-blog-response";
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -26,8 +27,8 @@ export class BlogComponent implements OnInit {
     };
 
     this.apiService.getAllBlogs(params).subscribe({
-      next: (response: PageResponseBlogResponse) => {
-        this.blogs = response.content; // API'den dönen veriyi kullan
+      next: (response: ApiResponsePageResponseBlogResponse) => {
+        this.blogs = response.data?.content; // API'den dönen veriyi kullan
         this.isLoading = false;
       },
       error: (error) => {
