@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   menuOpen = false;
+  email: string = "elmarbayarov@gmail.com";
 
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
