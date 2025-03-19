@@ -6,8 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-  @Input() name: string = 'Ryan Emberson';
-  @Input() title: string = 'CEO at LawExpert';
-  @Input() quote: string = 'When you place your case in the hands of our lawyers and paralegals, you are placing your case in the hands of professionals who are committed to achieving the best possible outcome.';
-  @Input() imageUrl: string = 'assets/lawyer-portrait.jpg';
+  @Input() name: string = 'Elmar Bayarov';
+  @Input() title: string = '  Lawyer';
+  @Input() quote: string = 'Since 2020, I have been working in the field of law, specializing in corporate law and contract law. I have worked as a legal consultant at Nexia Consulting and currently serve as a corporate lawyer at Azercell Telecom.  \n' +
+    '\n' +
+    'My goal is to provide you with tailored legal solutions to protect your business from legal risks.';
+  @Input() imageUrl: string = 'assets/elmar.jpg';
 }
