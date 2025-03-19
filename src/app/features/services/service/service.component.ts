@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-services',
@@ -7,16 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent {
-  services = [
-    { id: 1, name: 'Müqavilələrin hazırlanması və hüquqi ekspertizası', image: 'assets/images/service1.jpg' },
-    { id: 2, name: 'Miqrasiya hüququ üzrə', image: 'assets/images/service2.jpg' },
-    { id: 3, name: 'Korporativ hüquq', image: 'assets/images/service3.jpg' },
-    { id: 4, name: 'Texnologiya hüququ üzrə', image: 'assets/images/service4.jpg' },
-    { id: 5, name: 'Əqli mülkiyyət hüququ üzrə', image: 'assets/images/service5.jpg' },
-    { id: 6, name: 'Əmək hüququ üzrə', image: 'assets/images/service6.jpg' },
-  ];
+  services: any[] = [];
+  private jsonUrl = 'assets/services.json';
+  getServices(): Observable<any> {
+    return this.http.get<any>(this.jsonUrl);
+  }
 
-  constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.getServices().subscribe(data => {
+      this.services = data;
+    });
+  }
+
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   navigateToDetail(service: any) {
     this.router.navigate(['/service-detail', service.id]).then(() => {
