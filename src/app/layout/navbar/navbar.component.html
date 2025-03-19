@@ -18,7 +18,7 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <img class="object-cover" src="../../../assets/logo.webp" alt="">
+      <span class="logo-text">Elmar Bayarov</span>
     </div>
     <div class="block lg:hidden">
       <input type="checkbox" id="mycheckbox" class="hidden">
@@ -27,24 +27,23 @@
       <div id="ham-menu" class="w-[80%] !h-screen  top-[100%]  left-[-100%] duration-500 bg-white absolute ">
         <div class="py-5 px-2">
           <button class="bars-btn !w-full">
-            Appointment
+            Contact Us
           </button>
         </div>
         <ul>
           <li class="bars-list-elem"><a href="" > Home      </a></li>
-          <li class="bars-list-elem"><a href="" > About Us  </a></li>
-          <li class="bars-list-elem"><a href="" > Typography</a></li>
-          <li class="bars-list-elem"><a href="" > Conatcts  </a></li>
+          <li class="bars-list-elem"><a href="" > Services  </a></li>
+          <li class="bars-list-elem"><a href="" > Blogs</a></li>
+          <li class="bars-list-elem"><a href="" > About  </a></li>
         </ul>
       </div>
     </div>
     <div class=" items-center justify-center gap-5 hidden lg:flex">
       <ul class="nav-links">
-        <li><a href="#" class="text-[1.1em] text-black font-[500]" id="act" (click)="scrollToSection('home')">Home</a></li>
-        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('services')">Services</a></li>
-        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('blogs')">Blogs</a></li>
-        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('about')">About</a></li>
-<!--        <li><a href="#" class="text-[1.1em] text-black font-[500]" (click)="scrollToSection('contact')">Contact</a></li>-->
+        <li><span class="nav-item" (click)="scrollToSection('home')">Home</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('services')">Services</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('blogs')">Blogs</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('about')">About</span></li>
       </ul>
       <button class="appointment-btn"><a href="#" (click)="scrollToSection('contact')">Contact Us</a></button>
     </div>

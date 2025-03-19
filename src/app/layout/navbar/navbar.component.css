@@ -1,4 +1,17 @@
 /* Üst Panel (Top Bar) */
+/*cursor pointer*/
+.nav-item {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  color: #CCA876;
+}
+
 .nav-cont{padding-top: 80px;}
 .top-bar {
   background: #fff;
