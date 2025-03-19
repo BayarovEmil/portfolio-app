@@ -26,15 +26,15 @@
 
       <div id="ham-menu" class="w-[80%] !h-screen  top-[100%]  left-[-100%] duration-500 bg-white absolute ">
         <div class="py-5 px-2">
-          <button class="bars-btn !w-full">
+          <button class="bars-btn !w-full" (click)="scrollToSection('contact')">
             Contact Us
           </button>
         </div>
         <ul>
-          <li class="bars-list-elem"><a href="" > Home      </a></li>
-          <li class="bars-list-elem"><a href="" > Services  </a></li>
-          <li class="bars-list-elem"><a href="" > Blogs</a></li>
-          <li class="bars-list-elem"><a href="" > About  </a></li>
+          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('home')">Home</span></li>
+          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('services')">Services</span></li>
+          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('blogs')">Blogs</span></li>
+          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('about')">About</span></li>
         </ul>
       </div>
     </div>
