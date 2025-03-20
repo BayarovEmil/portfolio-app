@@ -11,9 +11,12 @@
         *ngFor="let service of services"
         (click)="navigateToDetail(service)"
       >
-        <div class="service-image" style="background: url(../../../../assets/home-1.jpg) center/cover;" ></div>
+        <div
+          class="service-image"
+          [ngStyle]="{'background-image': 'url(assets/images/' + service.image + ')'}"
+        ></div>
         <div class="service-overlay">
-          <h3 class="service-title">{{ service.name }}</h3>
+          <h3 class="service-title">{{ service.title }}</h3>
         </div>
       </div>
     </div>

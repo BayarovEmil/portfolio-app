@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "image": "corporative-law.jpg",
+    "title": "Korporativ Hüquq",
+    "titles": [
+      "Hüquqi şəxslərin yaradılması",
+      "Şirkətin nizamnaməsinin (təsis sənədlərinin) və daxili qaydalarının hazırlanması",
+      "Nümayəndəlik və filialların yaradılması",
+      "Payların alqı-satqısı",
+      "Hüquqi şəxsin yenidən təşkili",
+      "Etika, Komplayens və SƏTƏM qaydalarının hazırlanması və inkişaf etdirilməsi",
+      "İşçi və işəgötürənlər üçün hüquqi məsləhətlərin verilməsi",
+      "Hüquqi ekspertiza (due diligence)",
+      "Etibarnamələrin tərtibi, təsdiqi və tərcüməsi",
+      "Şirkətlərdə ləğvetmə, müflisləşmə proseslərinin təhlili və bu sahədə məsləhətlər",
+      "Saytlar üçün 'qaydalar və şərtlər', 'məxfilik' siyasətlərinin hazırlanması"
+    ]
+  },
+  {
+    "id": 2,
+    "image": "migration-law.jpg",
+    "title": "Miqrasiya Hüququ",
+    "titles": [
+      "İş icazəsi və müvəqqəti yaşayış icazəsinin alınması",
+      "Daimi yaşayış yeri və vətəndaşlıq müraciəti",
+      "İkili vətəndaşlıq barədə məsləhət verilməsi",
+      "Azərbaycana köçmə zamanı nəzərə alınmalı mühüm məsələlər barədə məsləhət verilməsi",
+      "Miqrasiyaya dair sərhəd qaydaları"
+    ]
+  },
+  {
+    "id": 3,
+    "image": "property-law.png",
+    "title": "Əqli Mülkiyyət",
+    "titles": [
+      "Patent, əmtəə nişanlarının alınması",
+      "Əmtəə nişanlarının mövcudluğu üzrə axtarış, əmtəə nişanlarının, patentlərin qeydiyyatı, qeydiyyatdan şikayət verilməsi",
+      "Əqli mülkiyyət hüquqlarının qorunması üçün müqavilələrin tərtib edilməsi və təhlili",
+      "Əmtəə nişanlarının əldə edilməsi üzrə razılaşmaların hazırlanması"
+    ]
+  },
+  {
+    "id": 4,
+    "image": "commertion-law.jpg",
+    "title": "Kommersiya və Müqavilələr Hüququ",
+    "titles": [
+      "Bizneslər üçün istifadəyə hazır müqavilə formalarının hazırlanması və dəyişikliklərin edilməsi",
+      "Müqavilə danışıqların hüquqi dəstək, müqavilələrin hazırlanması və ekspertizası",
+      "Niyyət məktublarının, məxfilik və məlumatların qorunması haqda razılaşma müqavilələrinin tərtibi",
+      "Malların beynəlxalq alqı-satqısının, beynəlxalq xidmətlərin, partnyorluq, distribütorluq, vasitəçilik və satış nümayəndəliyi razılaşma müqavilələrinin hazırlanması",
+      "Texnologiyanın ötürülməsi və lisenziya razılaşmaları üzrə məsləhətlərin verilməsi",
+      "Beynəlxalq və ya yerli olmasından asılı olmayaraq, müxtəlif sənaye sahələri üzrə çoxdilli müqavilə layihələrinin hazırlanması",
+      "Mürəkkəb biznes tələblərinə uyğun olaraq kommersiya yönümlü hüquqi həllər"
+    ]
+  }
+]
