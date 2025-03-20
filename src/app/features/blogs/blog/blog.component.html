@@ -20,12 +20,10 @@
             <img [src]="blog.coverImage" alt="{{ blog.title }}" class="blog-image">
           </div>
           <div class="blog-content">
-            <p class="blog-author">{{ blog.author }}</p>
+            <p class="blog-author">Elmar Bayarov</p>
             <h3 class="blog-title">{{ blog.title }}</h3>
-            <div class="blog-tags">
-              <span class="tag law">Law</span>
-              <span class="tag company">Hüquq şirkəti</span>
-            </div>
+            <p class="blog-description">{{ blog.description?.slice(0, 100) }}...</p>
+            <p class="blog-views"><i class="fa fa-eye"></i> {{ blog.viewCount }} Views</p>
           </div>
         </div>
       </div>
