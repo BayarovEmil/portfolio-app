@@ -11,28 +11,35 @@ import { ApiResponseBlogResponse } from '../../../services/models/api-response-b
   styleUrls: ['./blog-details.component.scss']
 })
 export class BlogDetailsComponent implements OnInit {
-  blog: BlogResponse | null = null; // Dəyişəni `null` olaraq tərif edirik
-  isLoading = true;
-  errorMessage = '';
+  blog: BlogResponse | null = null;
+  isLoading: boolean = true;
+  errorMessage: string = '';
 
   @Input() imageUrl: string = 'assets/lawyer-portrait.jpg';
 
   constructor(private route: ActivatedRoute, private blogService: BlogControllerService) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.getBlogById(id);
-    }
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id')); // ✅ ID-ni `number` formatına çeviririk
+
+      if (!isNaN(id) && id > 0) {
+        this.getBlogById(id);
+      } else {
+        this.errorMessage = 'Yanlış blog ID-si!';
+        this.isLoading = false;
+      }
+    });
   }
 
   getBlogById(id: number) {
     const params: GetById$Params = { 'blog-id': id };
+    console.log("Sorgu gonderildi");
 
     this.blogService.getById(params).subscribe({
       next: (response: ApiResponseBlogResponse) => {
-        if (response && response.data) {
-          this.blog = response.data; // `data` hissəsini `blog` obyektinə təyin edirik
+        if (response?.data) {
+          this.blog = response.data;
         } else {
           this.errorMessage = 'Blog məlumatı tapılmadı.';
         }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {GetAllBlogs$Params} from "../../../services/fn/blog-controller/get-all-blogs";
 import {BlogControllerService} from "../../../services/services/blog-controller.service";
-import {PageResponseBlogResponse} from "../../../services/models/page-response-blog-response";
 import {BlogResponse} from "../../../services/models/blog-response";
 import {ApiResponsePageResponseBlogResponse} from "../../../services/models/api-response-page-response-blog-response";
 @Component({
@@ -12,7 +11,7 @@ import {ApiResponsePageResponseBlogResponse} from "../../../services/models/api-
 })
 export class BlogComponent implements OnInit {
   blogs: Array<BlogResponse> | undefined = [];  // Boş array başlat
-  isLoading = true;   // Yüklenme durumu
+  isLoading = true;
 
   constructor(private router: Router, private apiService: BlogControllerService) {}
 
@@ -22,8 +21,8 @@ export class BlogComponent implements OnInit {
 
   getBlogs() {
     const params: GetAllBlogs$Params = {
-      page: 0,  // İlk sayfa
-      size: 10   // 10 blog getir
+      page: 0,
+      size: 10
     };
 
     this.apiService.getAllBlogs(params).subscribe({

@@ -1,28 +1,63 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { BlogResponse } from "../../../services/models/blog-response";
+import { BlogControllerService } from "../../../services/services/blog-controller.service";
+import { ApiResponsePageResponseBlogResponse } from "../../../services/models/api-response-page-response-blog-response";
 
 @Component({
   selector: 'app-other-blogs',
   templateUrl: './other-blogs.component.html',
   styleUrls: ['./other-blogs.component.scss']
 })
-export class OtherBlogsComponent implements OnInit {
-  @Input() blogId!: number;  // Mövcud blogun ID-si
-  filteredBlogs: any[] = [];
+export class OtherBlogsComponent implements OnInit, OnChanges {
+  @Input() blogId!: any;
+  filteredBlogs: BlogResponse[] = [];
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
-  blogs = [
-    { id: 1, author: 'Fuad Gashamov', title: 'Introduction to the New Arbitration Law', image: 'assets/images/blog1.jpg' },
-    { id: 2, author: 'Ruslan Bayramov', title: 'Contracts as the all-powerful tool', image: 'assets/images/blog2.jpg' },
-    { id: 3, author: 'Emin Musayev', title: 'Procedure for sale and purchase of shares of a company in Azerbaijan', image: 'assets/images/blog3.jpg' },
-  ];
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: BlogControllerService) {}
 
   ngOnInit() {
-    this.filteredBlogs = this.blogs.filter(blog => blog.id !== this.blogId);
+    if (!this.blogId || isNaN(this.blogId)) {
+      this.isLoading = false;
+      this.errorMessage = 'Invalid blog ID!';
+    } else {
+      this.loadOtherBlogs();
+    }
   }
 
-  navigateToDetail(blog: any) {
-    this.router.navigate(['/blog-details', blog.id]);
+  // ✅ blogId hər dəfə dəyişəndə yenidən bloqları yükləyirik
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['blogId'] && !changes['blogId'].firstChange) {
+      this.isLoading = true;
+      this.loadOtherBlogs();
+    }
+  }
+
+  loadOtherBlogs() {
+    this.apiService.getAllBlogs({ page: 0, size: 10 }).subscribe({
+      next: (response: ApiResponsePageResponseBlogResponse) => {
+        if (response?.data?.content) {
+          const currentBlogId = Number(this.blogId);
+          this.filteredBlogs = response.data.content.filter(blog => Number(blog.id) !== currentBlogId);
+        } else {
+          this.errorMessage = 'No other blogs available!';
+        }
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error fetching other blogs:', error);
+        this.errorMessage = 'Could not load blogs. Please try again later.';
+        this.isLoading = false;
+      }
+    });
+  }
+
+  navigateToDetail(blog: BlogResponse) {
+    this.router.navigate(['/blog-details', blog.id]).then(() => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    });
   }
 }
