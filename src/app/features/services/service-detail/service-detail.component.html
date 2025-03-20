@@ -2,14 +2,15 @@
   <div class="container">
     <!-- Service Header -->
     <div class="service-header">
-      <img src="../../../../assets/aboutimg.jpg" alt="{{ service?.name }}" class="service-image">
+      <img src="assets/images/{{ service?.image }}" alt="{{ service?.title }}" class="service-image">
       <div class="service-content">
-        <h2>{{ service?.name }}</h2>
-        <p *ngFor="let point of service?.details">- {{ point }}</p>
+        <h2>{{ service?.title }}</h2>
+        <p *ngFor="let point of service?.titles">- {{ point }}</p>
       </div>
     </div>
 
-    <div class = "">
+    <!-- Digər xidmətlər üçün komponent -->
+    <div>
       <app-other-services [serviceId]="service?.id"></app-other-services>
     </div>
   </div>
