@@ -15,7 +15,9 @@
           <p class="title text-[#666c84] text-[14px] font-[300] italic">&nbsp;{{ title }}</p>
         </div>
 
-        <button class="cta-button">Request a Free Consultation</button>
+        <button class="cta-button" (click)="scrollToSection('contact')">
+          Request a Consultation
+        </button>
       </div>
 
       <div class="about-image hidden md:flex items-center justify-end ">

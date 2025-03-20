@@ -22,17 +22,16 @@ export class ContactComponent {
   };
 
   services = [
-    'Business Law',
-    'Family Law',
-    'Civil Litigation',
-    'Employment Law',
-    'Criminal Law'
+    'Korporativ Hüquq',
+    'Miqrasiya Hüququ',
+    'Əqli Mülkiyyət',
+    'Kommersiya və Müqavilələr Hüququ'
   ];
 
   showServices: boolean = false;
 
   toggleServiceList() {
-    this.showServices = this.formData.service === 'Family Law';
+    this.showServices = this.formData.service === 'Korporativ Hüquq';
   }
 
   submitForm() {

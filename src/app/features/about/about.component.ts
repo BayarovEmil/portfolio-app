@@ -12,4 +12,11 @@ export class AboutComponent {
     '\n' +
     'My goal is to provide you with tailored legal solutions to protect your business from legal risks.';
   @Input() imageUrl: string = 'assets/elmar.jpg';
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
