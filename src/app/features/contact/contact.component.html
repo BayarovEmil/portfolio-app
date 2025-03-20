@@ -3,26 +3,43 @@
     <div class="contact-form w-full md:w-[50%] h-full">
       <h3 class="!text-[45px] !mb-8 !font-extrabold text-center md:text-start ">Get Consultation</h3>
 
-      <form (submit)="submitForm()">
-        <div class=" flex flex-col md:flex-row items-center justify-between gap-10">
-          <input type="text" class="border-0 outline-0 py-3 px-2 w-full md:w-[300px] " placeholder="Name" [(ngModel)]="formData.name" name="name" required>
-          <input type="text" class="border-0 outline-0 py-3 px-2 w-full md:w-[300px] " placeholder="Phone" [(ngModel)]="formData.phone" name="phone" required>
+      <form (submit)="submitForm()" class="contact-form">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="w-full md:w-[300px]">
+            <label class="block">Name <span class="text-red-500">*</span></label>
+            <input type="text" class="input-field" placeholder="Name" [(ngModel)]="formData.name" name="name" required>
+          </div>
+          <div class="w-full md:w-[300px]">
+            <label class="block">Phone <span class="text-red-500">*</span></label>
+            <input type="text" class="input-field" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" required>
+          </div>
         </div>
 
-        <div class="flex-col md:flex-row flex items-center justify-between gap-10 py-5">
-          <input type="email" class="border-0 outline-0 py-3 px-2 w-full md:w-[300px] " placeholder="Email" [(ngModel)]="formData.email" name="email" required>
-          <select [(ngModel)]="formData.service" name="service" class="border-0 outline-0 py-3 px-2 w-full md:w-[300px] " (change)="toggleServiceList()">
-            <option value="">Select Service</option>
-            <option value="Business Law">Kommersiya və Müqavilələr Hüququ</option>
-            <option value="Family Law">Əqli Mülkiyyət</option>
-            <option value="Civil Litigation">Miqrasiya Hüququ</option>
-            <option value="Civil Litigation">Korporativ Hüquq</option>
-          </select>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-10 py-5">
+          <div class="w-full md:w-[300px]">
+            <label class="block">Email <span class="text-red-500">*</span></label>
+            <input type="email" class="input-field" placeholder="Email" [(ngModel)]="formData.email" name="email" required>
+          </div>
+          <div class="w-full md:w-[300px]">
+            <label class="block">Select Service <span class="text-red-500">*</span></label>
+            <select [(ngModel)]="formData.service" name="service" class="input-field" (change)="toggleServiceList()">
+              <option value="">Select Service</option>
+              <option value="Business Law">Kommersiya və Müqavilələr Hüququ</option>
+              <option value="Family Law">Əqli Mülkiyyət</option>
+              <option value="Civil Litigation">Miqrasiya Hüququ</option>
+              <option value="Civil Litigation">Korporativ Hüquq</option>
+            </select>
+          </div>
         </div>
-        <textarea class="w-full h-[200px] p-3 border-0 outline-0 resize-none" placeholder="Message" [(ngModel)]="formData.message" name="message" required></textarea>
-        <button class="cta-button"  type="submit">Request a Consultation</button>
 
+        <label class="block">Message <span class="text-red-500">*</span></label>
+        <textarea class="input-field h-[200px] resize-none" placeholder="Message" [(ngModel)]="formData.message" name="message" required></textarea>
+
+        <p *ngIf="errorMessage" class="text-red-500 text-sm">{{ errorMessage }}</p>
+
+        <button class="cta-button" type="submit">Request a Consultation</button>
       </form>
+
     </div>
 
     <div class="contact-image w-[50%]  items-center justify-end hidden md:flex">

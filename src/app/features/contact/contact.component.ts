@@ -35,8 +35,23 @@ export class ContactComponent {
   }
 
   submitForm() {
-    this.isLoading = true;
     this.errorMessage = '';
+
+    // Boş sahələri yoxlamaq üçün
+    const invalidFields = [];
+
+    if (!this.formData.name.trim()) invalidFields.push('name');
+    if (!this.formData.phone.trim()) invalidFields.push('phone');
+    if (!this.formData.email.trim()) invalidFields.push('email');
+    if (!this.formData.service.trim()) invalidFields.push('service');
+    if (!this.formData.message.trim()) invalidFields.push('message');
+
+    if (invalidFields.length > 0) {
+      this.highlightInvalidFields(invalidFields);
+      return; // API sorğusunu göndərmirik
+    }
+
+    this.isLoading = true;
 
     const params: SendMessage$Params = {
       username: this.formData.name,
@@ -59,6 +74,20 @@ export class ContactComponent {
       }
     });
   }
+
+// Xətalı inputları animasiya etmək üçün funksiya
+  highlightInvalidFields(fields: string[]) {
+    fields.forEach((field) => {
+      const input = document.querySelector(`[name="${field}"]`) as HTMLElement;
+      if (input) {
+        input.classList.add('shake'); // Titrəyiş effekti verir
+        setTimeout(() => input.classList.remove('shake'), 500); // 0.5 saniyə sonra effekti silir
+      }
+    });
+
+    this.errorMessage = 'Zəhmət olmasa bütün sahələri doldurun!';
+  }
+
 
   resetForm() {
     this.formData = {

@@ -1,12 +1,45 @@
-.container{
+.container {
   padding: 140px 50px 0 50px;
   width: 100%;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-.contact-form h3{font-family: "PT Serif", "Times New Roman", Times, serif;;}
+
+.contact-form h3 {
+  font-family: "PT Serif", "Times New Roman", Times, serif;
+}
+
+/* Input sahələri üçün ümumi stil */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Fokus və hover effekti */
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #D4B062;
+  box-shadow: 0 0 8px rgba(212, 176, 98, 0.5);
+  outline: none;
+}
+
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+  border-color: #B49465;
+}
+
+/* Buton */
 .cta-button {
   margin: 20px 0;
   padding: 15px 40px !important;
@@ -14,16 +47,31 @@
   background: #D4B062;
   color: white;
   font-size: 16px;
-  font-family: "Lato", Helvetica, Arial, sans-serif;;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  &:hover {
-  border: 2px solid #B49465;
-    background: #B49465;
-  }
+  border-radius: 8px;
 }
-@media only screen and (min-width:768px) {
-  .container{
+
+.cta-button:hover {
+  border: 2px solid #B49465;
+  background: #B49465;
+}
+
+/* Mobil üçün uyğunlaşdırma */
+@media only screen and (max-width: 768px) {
+  .container {
     width: 90%;
+    flex-direction: column;
+  }
+
+  .contact-image {
+    display: none;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
   }
 }
