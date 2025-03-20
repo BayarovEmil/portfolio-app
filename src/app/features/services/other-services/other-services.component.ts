@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {JsonServiceService} from "../../../services/json-service.service";
 
 @Component({
   selector: 'app-other-services',
@@ -7,25 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./other-services.component.scss']
 })
 export class OtherServicesComponent implements OnInit {
-  @Input() serviceId!: number;  // Mövcud xidmətin ID-si
+  @Input() serviceId!: number;
   filteredServices: any[] = [];
+  services: any[] = [];
 
-  services = [
-    { id: 1, name: 'Müqavilələrin hazırlanması və hüquqi ekspertizası', image: 'assets/images/service1.jpg' },
-    { id: 2, name: 'Miqrasiya hüququ üzrə', image: 'assets/images/service2.jpg' },
-    { id: 3, name: 'Korporativ hüquq', image: 'assets/images/service3.jpg' },
-    { id: 4, name: 'Texnologiya hüququ üzrə', image: 'assets/images/service4.jpg' },
-    { id: 5, name: 'Əqli mülkiyyət hüququ üzrə', image: 'assets/images/service5.jpg' },
-    { id: 6, name: 'Əmək hüququ üzrə', image: 'assets/images/service6.jpg' },
-  ];
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private jsonService: JsonServiceService
+  ) {}
 
   ngOnInit() {
-    this.filteredServices = this.services.filter(service => service.id !== this.serviceId);
+    this.jsonService.getServices().subscribe(data => {
+      this.services = data;
+      this.filteredServices = this.services.filter(service => service.id !== this.serviceId);
+      this.filteredServices = this.filteredServices.slice(0, 3);
+    });
   }
 
   navigateToDetail(service: any) {
     this.router.navigate(['/service-detail', service.id]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
