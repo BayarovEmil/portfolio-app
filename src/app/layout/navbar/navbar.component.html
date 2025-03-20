@@ -21,23 +21,41 @@
       <span class="logo-text" (click)="scrollToSection('home')"><a class="nav-item" routerLink="/home">Elmar Bayarov</a></span>
     </div>
     <div class="block lg:hidden">
+      <!-- Checkbox gizlidir, menyunun açılıb-bağlanmasını idarə edir -->
       <input type="checkbox" id="mycheckbox" class="hidden">
-      <div id="sss"><label for="mycheckbox"><i class="fa-solid fa-bars text-2xl"></i></label></div>
 
-      <div id="ham-menu" class="w-[80%] !h-screen  top-[100%]  left-[-100%] duration-500 bg-white absolute ">
+      <!-- Menü açma düyməsi -->
+      <div id="sss">
+        <label for="mycheckbox" (click)="toggleMenu()">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </label>
+      </div>
+
+      <!-- Mobil menyu -->
+      <div id="ham-menu" class="w-[80%] !h-screen top-[100%] left-[-100%] duration-500 bg-white absolute"
+           [ngClass]="{'open': menuOpen}">
         <div class="py-5 px-2">
-          <button class="bars-btn !w-full" (click)="scrollToSection('contact')">
+          <button class="bars-btn !w-full" (click)="scrollToSection('contact'); closeMenu()">
             Contact Us
           </button>
         </div>
         <ul>
-          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('home')">Home</span></li>
-          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('services')">Services</span></li>
-          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('blogs')">Blogs</span></li>
-          <li class="bars-list-elem"><span class="nav-item" (click)="scrollToSection('about')">About</span></li>
+          <li class="bars-list-elem">
+            <span class="nav-item" (click)="scrollToSection('home'); closeMenu()">Home</span>
+          </li>
+          <li class="bars-list-elem">
+            <span class="nav-item" (click)="scrollToSection('services'); closeMenu()">Services</span>
+          </li>
+          <li class="bars-list-elem">
+            <span class="nav-item" (click)="scrollToSection('blogs'); closeMenu()">Blogs</span>
+          </li>
+          <li class="bars-list-elem">
+            <span class="nav-item" (click)="scrollToSection('about'); closeMenu()">About</span>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class=" items-center justify-center gap-5 hidden lg:flex">
       <ul class="nav-links">
         <li><span class="nav-item" (click)="scrollToSection('home')">Home</span></li>
@@ -48,10 +66,6 @@
       <button class="appointment-btn"><a href="#" (click)="scrollToSection('contact')">Contact Us</a></button>
     </div>
 
-    <!-- Mobil menyu düyməsi -->
-    <button class="menu-btn" (click)="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
   </div>
 </nav>
 </div>
