@@ -23,15 +23,22 @@ export class NavbarComponent {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
-    this.updateCheckbox();
+
+    // Checkbox-un dəyərini birbaşa dəyişirik
+    setTimeout(() => {
+      this.updateCheckbox();
+      this.cdr.detectChanges(); // UI-ni məcburi yeniləyirik
+    }, 0);
   }
 
   closeMenu() {
     this.menuOpen = false;
-    this.updateCheckbox();
 
-    // UI-nin yenilənməsi üçün
-    this.cdr.detectChanges();
+    // Checkbox-un dəyərini birbaşa dəyişirik
+    setTimeout(() => {
+      this.updateCheckbox();
+      this.cdr.detectChanges(); // UI-ni məcburi yeniləyirik
+    }, 0);
   }
 
   updateCheckbox() {

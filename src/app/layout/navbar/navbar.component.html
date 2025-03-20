@@ -21,19 +21,17 @@
       <span class="logo-text" (click)="scrollToSection('home')"><a class="nav-item" routerLink="/home">Elmar Bayarov</a></span>
     </div>
     <div class="block lg:hidden">
-      <!-- Checkbox gizlidir, menyunun açılıb-bağlanmasını idarə edir -->
       <input type="checkbox" id="mycheckbox" class="hidden">
 
-      <!-- Menü açma düyməsi -->
+      <!-- Toggle Butonu -->
       <div id="sss">
-        <label for="mycheckbox" (click)="toggleMenu()">
+        <label (click)="toggleMenu()">
           <i class="fa-solid fa-bars text-2xl"></i>
         </label>
       </div>
 
       <!-- Mobil menyu -->
-      <div id="ham-menu" class="w-[80%] !h-screen top-[100%] left-[-100%] duration-500 bg-white absolute"
-           [ngClass]="{'open': menuOpen}">
+      <div id="ham-menu" [ngClass]="{'open': menuOpen}" class="w-[80%] !h-screen top-[100%] left-[-100%] duration-500 bg-white absolute">
         <div class="py-5 px-2">
           <button class="bars-btn !w-full" (click)="scrollToSection('contact'); closeMenu()">
             Contact Us
@@ -55,6 +53,7 @@
         </ul>
       </div>
     </div>
+
 
     <div class=" items-center justify-center gap-5 hidden lg:flex">
       <ul class="nav-links">
