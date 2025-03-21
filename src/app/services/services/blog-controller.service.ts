@@ -24,6 +24,31 @@ export class BlogControllerService extends BaseService {
     super(config, http);
   }
 
+  /** Path part for operation `getAllBlogs()` */
+  static readonly GetAllBlogsPath = '/blogs';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllBlogs()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllBlogs$Response(params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponsePageResponseBlogResponse>> {
+    return getAllBlogs(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllBlogs$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllBlogs(params?: GetAllBlogs$Params, context?: HttpContext): Observable<ApiResponsePageResponseBlogResponse> {
+    return this.getAllBlogs$Response(params, context).pipe(
+      map((r: StrictHttpResponse<ApiResponsePageResponseBlogResponse>): ApiResponsePageResponseBlogResponse => r.body)
+    );
+  }
+
   /** Path part for operation `getById()` */
   static readonly GetByIdPath = '/blogs/{blog-id}';
 
@@ -46,31 +71,6 @@ export class BlogControllerService extends BaseService {
   getById(params: GetById$Params, context?: HttpContext): Observable<ApiResponseBlogResponse> {
     return this.getById$Response(params, context).pipe(
       map((r: StrictHttpResponse<ApiResponseBlogResponse>): ApiResponseBlogResponse => r.body)
-    );
-  }
-
-  /** Path part for operation `getAllBlogs()` */
-  static readonly GetAllBlogsPath = '/blogs/';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getAllBlogs()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getAllBlogs$Response(params?: GetAllBlogs$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponsePageResponseBlogResponse>> {
-    return getAllBlogs(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getAllBlogs$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getAllBlogs(params?: GetAllBlogs$Params, context?: HttpContext): Observable<ApiResponsePageResponseBlogResponse> {
-    return this.getAllBlogs$Response(params, context).pipe(
-      map((r: StrictHttpResponse<ApiResponsePageResponseBlogResponse>): ApiResponsePageResponseBlogResponse => r.body)
     );
   }
 

@@ -8,18 +8,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { ApiResponseBlogResponse } from '../../models/api-response-blog-response';
 import { BlogRequest } from '../../models/blog-request';
-import { BlogResponse } from '../../models/blog-response';
 
 export interface UpdateBlog$Params {
-  blogId: number;
+  'blog-id': number;
       body: BlogRequest
 }
 
-export function updateBlog(http: HttpClient, rootUrl: string, params: UpdateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
+export function updateBlog(http: HttpClient, rootUrl: string, params: UpdateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
   const rb = new RequestBuilder(rootUrl, updateBlog.PATH, 'put');
   if (params) {
-    rb.query('blogId', params.blogId, {});
+    rb.path('blog-id', params['blog-id'], {});
     rb.body(params.body, 'application/json');
   }
 
@@ -28,9 +28,9 @@ export function updateBlog(http: HttpClient, rootUrl: string, params: UpdateBlog
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<BlogResponse>;
+      return r as StrictHttpResponse<ApiResponseBlogResponse>;
     })
   );
 }
 
-updateBlog.PATH = '/admin/blogs';
+updateBlog.PATH = '/admin/blogs/{blog-id}';

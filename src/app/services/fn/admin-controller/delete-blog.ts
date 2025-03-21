@@ -10,13 +10,13 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface DeleteBlog$Params {
-  id: number;
+  'blog-id': number;
 }
 
 export function deleteBlog(http: HttpClient, rootUrl: string, params: DeleteBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, deleteBlog.PATH, 'delete');
   if (params) {
-    rb.query('id', params.id, {});
+    rb.path('blog-id', params['blog-id'], {});
   }
 
   return http.request(
@@ -29,4 +29,4 @@ export function deleteBlog(http: HttpClient, rootUrl: string, params: DeleteBlog
   );
 }
 
-deleteBlog.PATH = '/admin/blogs';
+deleteBlog.PATH = '/admin/blogs/{blog-id}';

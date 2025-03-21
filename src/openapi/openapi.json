@@ -34,7 +34,7 @@
     }
   ],
   "paths": {
-    "/admin/blogs": {
+    "/admin/blogs/{blog-id}": {
       "put": {
         "tags": [
           "Admin Controller"
@@ -42,8 +42,8 @@
         "operationId": "updateBlog",
         "parameters": [
           {
-            "name": "blogId",
-            "in": "query",
+            "name": "blog-id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
@@ -67,35 +67,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Admin Controller"
-        ],
-        "operationId": "createBlog",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/BlogRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogResponse"
+                  "$ref": "#/components/schemas/ApiResponseBlogResponse"
                 }
               }
             }
@@ -109,8 +81,8 @@
         "operationId": "deleteBlog",
         "parameters": [
           {
-            "name": "id",
-            "in": "query",
+            "name": "blog-id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
@@ -125,12 +97,12 @@
         }
       }
     },
-    "/user/subscribe/v2": {
+    "/user/subscriptions": {
       "post": {
         "tags": [
           "Subscription Controller"
         ],
-        "operationId": "subscribeV2",
+        "operationId": "subscribe",
         "parameters": [
           {
             "name": "email",
@@ -141,66 +113,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/subscribe/notification": {
-      "post": {
-        "tags": [
-          "Subscription Controller"
-        ],
-        "operationId": "sendNotification",
-        "parameters": [
-          {
-            "name": "message",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/subscribe/": {
-      "post": {
-        "tags": [
-          "Subscription Controller"
-        ],
-        "operationId": "subscribe",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SubscriberRequest"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -300,7 +212,67 @@
         }
       }
     },
-    "/admin/cover/{blog-id}": {
+    "/admin/send/notification": {
+      "post": {
+        "tags": [
+          "Admin Controller"
+        ],
+        "operationId": "sendNotificationMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/blogs": {
+      "post": {
+        "tags": [
+          "Admin Controller"
+        ],
+        "operationId": "createBlog",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlogRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseBlogResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/blogs/cover/{blog-id}": {
       "post": {
         "tags": [
           "Admin Controller"
@@ -337,70 +309,12 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
     },
-    "/user/test": {
-      "get": {
-        "tags": [
-          "user-controller"
-        ],
-        "operationId": "test",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/blogs/{blog-id}": {
-      "get": {
-        "tags": [
-          "Blog Controller"
-        ],
-        "operationId": "getById",
-        "parameters": [
-          {
-            "name": "blog-id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiResponseBlogResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/blogs/": {
+    "/blogs": {
       "get": {
         "tags": [
           "Blog Controller"
@@ -442,6 +356,37 @@
         }
       }
     },
+    "/blogs/{blog-id}": {
+      "get": {
+        "tags": [
+          "Blog Controller"
+        ],
+        "operationId": "getById",
+        "parameters": [
+          {
+            "name": "blog-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseBlogResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/refresh-token": {
       "get": {
         "tags": [
@@ -451,26 +396,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/admin/test": {
-      "get": {
-        "tags": [
-          "Admin Controller"
-        ],
-        "operationId": "test_1",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       }
@@ -489,82 +414,25 @@
           },
           "text": {
             "type": "string"
+          },
+          "notificationRequest": {
+            "$ref": "#/components/schemas/NotificationRequest"
           }
         }
       },
-      "BlogResponse": {
+      "NotificationRequest": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
+          "message": {
+            "type": "string"
           },
           "title": {
             "type": "string"
           },
-          "description": {
+          "summary": {
             "type": "string"
           },
-          "text": {
-            "type": "string"
-          },
-          "author": {
-            "type": "string"
-          },
-          "viewCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "coverImage": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "byte"
-            }
-          }
-        }
-      },
-      "SubscriberRequest": {
-        "required": [
-          "email"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "phoneNumber": {
-            "type": "string"
-          }
-        }
-      },
-      "AuthenticationRequest": {
-        "required": [
-          "email",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 2147483647,
-            "minLength": 4,
-            "type": "string"
-          }
-        }
-      },
-      "AuthenticationResponse": {
-        "type": "object",
-        "properties": {
-          "access_token": {
-            "type": "string"
-          },
-          "refresh_token": {
+          "url": {
             "type": "string"
           }
         }
@@ -654,6 +522,62 @@
           },
           "data": {
             "$ref": "#/components/schemas/BlogResponse"
+          }
+        }
+      },
+      "BlogResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "viewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "coverImage": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticationRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 2147483647,
+            "minLength": 4,
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
           }
         }
       },

@@ -8,5 +8,5 @@ export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
 export { BlogRequest } from './models/blog-request';
 export { BlogResponse } from './models/blog-response';
+export { NotificationRequest } from './models/notification-request';
 export { PageResponseBlogResponse } from './models/page-response-blog-response';
-export { SubscriberRequest } from './models/subscriber-request';

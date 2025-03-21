@@ -16,8 +16,7 @@ export interface UploadCarCoverPicture$Params {
 }
 }
 
-export function uploadCarCoverPicture(http: HttpClient, rootUrl: string, params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
+export function uploadCarCoverPicture(http: HttpClient, rootUrl: string, params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, uploadCarCoverPicture.PATH, 'post');
   if (params) {
     rb.path('blog-id', params['blog-id'], {});
@@ -25,14 +24,13 @@ export function uploadCarCoverPicture(http: HttpClient, rootUrl: string, params:
   }
 
   return http.request(
-    rb.build({ responseType: 'json', accept: 'application/json', context })
+    rb.build({ responseType: 'text', accept: '*/*', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<{
-      }>;
+      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
     })
   );
 }
 
-uploadCarCoverPicture.PATH = '/admin/cover/{blog-id}';
+uploadCarCoverPicture.PATH = '/admin/blogs/cover/{blog-id}';

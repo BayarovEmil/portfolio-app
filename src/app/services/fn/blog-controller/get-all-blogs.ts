@@ -32,4 +32,4 @@ export function getAllBlogs(http: HttpClient, rootUrl: string, params?: GetAllBl
   );
 }
 
-getAllBlogs.PATH = '/blogs/';
+getAllBlogs.PATH = '/blogs';

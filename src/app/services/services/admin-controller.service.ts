@@ -11,13 +11,13 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { BlogResponse } from '../models/blog-response';
+import { ApiResponseBlogResponse } from '../models/api-response-blog-response';
 import { createBlog } from '../fn/admin-controller/create-blog';
 import { CreateBlog$Params } from '../fn/admin-controller/create-blog';
 import { deleteBlog } from '../fn/admin-controller/delete-blog';
 import { DeleteBlog$Params } from '../fn/admin-controller/delete-blog';
-import { test1 } from '../fn/admin-controller/test-1';
-import { Test1$Params } from '../fn/admin-controller/test-1';
+import { sendNotificationMessage } from '../fn/admin-controller/send-notification-message';
+import { SendNotificationMessage$Params } from '../fn/admin-controller/send-notification-message';
 import { updateBlog } from '../fn/admin-controller/update-blog';
 import { UpdateBlog$Params } from '../fn/admin-controller/update-blog';
 import { uploadCarCoverPicture } from '../fn/admin-controller/upload-car-cover-picture';
@@ -30,7 +30,7 @@ export class AdminControllerService extends BaseService {
   }
 
   /** Path part for operation `updateBlog()` */
-  static readonly UpdateBlogPath = '/admin/blogs';
+  static readonly UpdateBlogPath = '/admin/blogs/{blog-id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -38,7 +38,7 @@ export class AdminControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateBlog$Response(params: UpdateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
+  updateBlog$Response(params: UpdateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
     return updateBlog(this.http, this.rootUrl, params, context);
   }
 
@@ -48,39 +48,14 @@ export class AdminControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateBlog(params: UpdateBlog$Params, context?: HttpContext): Observable<BlogResponse> {
+  updateBlog(params: UpdateBlog$Params, context?: HttpContext): Observable<ApiResponseBlogResponse> {
     return this.updateBlog$Response(params, context).pipe(
-      map((r: StrictHttpResponse<BlogResponse>): BlogResponse => r.body)
-    );
-  }
-
-  /** Path part for operation `createBlog()` */
-  static readonly CreateBlogPath = '/admin/blogs';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `createBlog()` instead.
-   *
-   * This method sends `application/json` and handles request body of type `application/json`.
-   */
-  createBlog$Response(params: CreateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
-    return createBlog(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `createBlog$Response()` instead.
-   *
-   * This method sends `application/json` and handles request body of type `application/json`.
-   */
-  createBlog(params: CreateBlog$Params, context?: HttpContext): Observable<BlogResponse> {
-    return this.createBlog$Response(params, context).pipe(
-      map((r: StrictHttpResponse<BlogResponse>): BlogResponse => r.body)
+      map((r: StrictHttpResponse<ApiResponseBlogResponse>): ApiResponseBlogResponse => r.body)
     );
   }
 
   /** Path part for operation `deleteBlog()` */
-  static readonly DeleteBlogPath = '/admin/blogs';
+  static readonly DeleteBlogPath = '/admin/blogs/{blog-id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -104,8 +79,62 @@ export class AdminControllerService extends BaseService {
     );
   }
 
+  /** Path part for operation `sendNotificationMessage()` */
+  static readonly SendNotificationMessagePath = '/admin/send/notification';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `sendNotificationMessage()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  sendNotificationMessage$Response(params: SendNotificationMessage$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return sendNotificationMessage(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `sendNotificationMessage$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  sendNotificationMessage(params: SendNotificationMessage$Params, context?: HttpContext): Observable<{
+}> {
+    return this.sendNotificationMessage$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `createBlog()` */
+  static readonly CreateBlogPath = '/admin/blogs';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `createBlog()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  createBlog$Response(params: CreateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
+    return createBlog(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `createBlog$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  createBlog(params: CreateBlog$Params, context?: HttpContext): Observable<ApiResponseBlogResponse> {
+    return this.createBlog$Response(params, context).pipe(
+      map((r: StrictHttpResponse<ApiResponseBlogResponse>): ApiResponseBlogResponse => r.body)
+    );
+  }
+
   /** Path part for operation `uploadCarCoverPicture()` */
-  static readonly UploadCarCoverPicturePath = '/admin/cover/{blog-id}';
+  static readonly UploadCarCoverPicturePath = '/admin/blogs/cover/{blog-id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -113,8 +142,7 @@ export class AdminControllerService extends BaseService {
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  uploadCarCoverPicture$Response(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
+  uploadCarCoverPicture$Response(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
     return uploadCarCoverPicture(this.http, this.rootUrl, params, context);
   }
 
@@ -124,37 +152,9 @@ export class AdminControllerService extends BaseService {
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  uploadCarCoverPicture(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<{
-}> {
+  uploadCarCoverPicture(params: UploadCarCoverPicture$Params, context?: HttpContext): Observable<void> {
     return this.uploadCarCoverPicture$Response(params, context).pipe(
-      map((r: StrictHttpResponse<{
-}>): {
-} => r.body)
-    );
-  }
-
-  /** Path part for operation `test1()` */
-  static readonly Test1Path = '/admin/test';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `test1()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  test1$Response(params?: Test1$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-    return test1(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `test1$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  test1(params?: Test1$Params, context?: HttpContext): Observable<string> {
-    return this.test1$Response(params, context).pipe(
-      map((r: StrictHttpResponse<string>): string => r.body)
+      map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 

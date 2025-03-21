@@ -8,14 +8,14 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { ApiResponseBlogResponse } from '../../models/api-response-blog-response';
 import { BlogRequest } from '../../models/blog-request';
-import { BlogResponse } from '../../models/blog-response';
 
 export interface CreateBlog$Params {
       body: BlogRequest
 }
 
-export function createBlog(http: HttpClient, rootUrl: string, params: CreateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<BlogResponse>> {
+export function createBlog(http: HttpClient, rootUrl: string, params: CreateBlog$Params, context?: HttpContext): Observable<StrictHttpResponse<ApiResponseBlogResponse>> {
   const rb = new RequestBuilder(rootUrl, createBlog.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
@@ -26,7 +26,7 @@ export function createBlog(http: HttpClient, rootUrl: string, params: CreateBlog
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<BlogResponse>;
+      return r as StrictHttpResponse<ApiResponseBlogResponse>;
     })
   );
 }

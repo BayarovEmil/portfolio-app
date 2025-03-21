@@ -8,17 +8,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { SubscriberRequest } from '../../models/subscriber-request';
 
 export interface Subscribe$Params {
-      body: SubscriberRequest
+  email: string;
 }
 
 export function subscribe(http: HttpClient, rootUrl: string, params: Subscribe$Params, context?: HttpContext): Observable<StrictHttpResponse<{
 }>> {
   const rb = new RequestBuilder(rootUrl, subscribe.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.query('email', params.email, {});
   }
 
   return http.request(
@@ -32,4 +31,4 @@ export function subscribe(http: HttpClient, rootUrl: string, params: Subscribe$P
   );
 }
 
-subscribe.PATH = '/user/subscribe/';
+subscribe.PATH = '/user/subscriptions';

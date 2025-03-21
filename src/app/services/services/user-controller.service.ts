@@ -13,8 +13,6 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { sendMessage } from '../fn/user-controller/send-message';
 import { SendMessage$Params } from '../fn/user-controller/send-message';
-import { test } from '../fn/user-controller/test';
-import { Test$Params } from '../fn/user-controller/test';
 
 @Injectable({ providedIn: 'root' })
 export class UserControllerService extends BaseService {
@@ -44,31 +42,6 @@ export class UserControllerService extends BaseService {
   sendMessage(params: SendMessage$Params, context?: HttpContext): Observable<void> {
     return this.sendMessage$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
-    );
-  }
-
-  /** Path part for operation `test()` */
-  static readonly TestPath = '/user/test';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `test()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  test$Response(params?: Test$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-    return test(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `test$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  test(params?: Test$Params, context?: HttpContext): Observable<string> {
-    return this.test$Response(params, context).pipe(
-      map((r: StrictHttpResponse<string>): string => r.body)
     );
   }
 

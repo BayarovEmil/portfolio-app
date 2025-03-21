@@ -11,12 +11,8 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { sendNotification } from '../fn/subscription-controller/send-notification';
-import { SendNotification$Params } from '../fn/subscription-controller/send-notification';
 import { subscribe } from '../fn/subscription-controller/subscribe';
 import { Subscribe$Params } from '../fn/subscription-controller/subscribe';
-import { subscribeV2 } from '../fn/subscription-controller/subscribe-v-2';
-import { SubscribeV2$Params } from '../fn/subscription-controller/subscribe-v-2';
 
 @Injectable({ providedIn: 'root' })
 export class SubscriptionControllerService extends BaseService {
@@ -24,72 +20,14 @@ export class SubscriptionControllerService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `subscribeV2()` */
-  static readonly SubscribeV2Path = '/user/subscribe/v2';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `subscribeV2()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  subscribeV2$Response(params: SubscribeV2$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
-    return subscribeV2(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `subscribeV2$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  subscribeV2(params: SubscribeV2$Params, context?: HttpContext): Observable<{
-}> {
-    return this.subscribeV2$Response(params, context).pipe(
-      map((r: StrictHttpResponse<{
-}>): {
-} => r.body)
-    );
-  }
-
-  /** Path part for operation `sendNotification()` */
-  static readonly SendNotificationPath = '/user/subscribe/notification';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `sendNotification()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  sendNotification$Response(params: SendNotification$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
-    return sendNotification(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `sendNotification$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  sendNotification(params: SendNotification$Params, context?: HttpContext): Observable<{
-}> {
-    return this.sendNotification$Response(params, context).pipe(
-      map((r: StrictHttpResponse<{
-}>): {
-} => r.body)
-    );
-  }
-
   /** Path part for operation `subscribe()` */
-  static readonly SubscribePath = '/user/subscribe/';
+  static readonly SubscribePath = '/user/subscriptions';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `subscribe()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method doesn't expect any request body.
    */
   subscribe$Response(params: Subscribe$Params, context?: HttpContext): Observable<StrictHttpResponse<{
 }>> {
@@ -100,7 +38,7 @@ export class SubscriptionControllerService extends BaseService {
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `subscribe$Response()` instead.
    *
-   * This method sends `application/json` and handles request body of type `application/json`.
+   * This method doesn't expect any request body.
    */
   subscribe(params: Subscribe$Params, context?: HttpContext): Observable<{
 }> {
