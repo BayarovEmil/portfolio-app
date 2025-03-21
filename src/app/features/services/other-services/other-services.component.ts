@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {JsonServiceService} from "../../../services/json-service.service";
+import {JsonServiceService} from "../../../json-service/json-service.service";
 
 @Component({
   selector: 'app-other-services',
