@@ -4,6 +4,7 @@ import {GetAllBlogs$Params} from "../../../services/fn/blog-controller/get-all-b
 import {BlogControllerService} from "../../../services/services/blog-controller.service";
 import {BlogResponse} from "../../../services/models/blog-response";
 import {ApiResponsePageResponseBlogResponse} from "../../../services/models/api-response-page-response-blog-response";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -13,7 +14,11 @@ export class BlogComponent implements OnInit {
   blogs: Array<BlogResponse> | undefined = [];  // Boş array başlat
   isLoading = true;
 
-  constructor(private router: Router, private apiService: BlogControllerService) {}
+  constructor(
+    private router: Router,
+    private apiService: BlogControllerService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit() {
     this.getBlogs();
@@ -27,11 +32,11 @@ export class BlogComponent implements OnInit {
 
     this.apiService.getAllBlogs(params).subscribe({
       next: (response: ApiResponsePageResponseBlogResponse) => {
-        this.blogs = response.data?.content; // API'den dönen veriyi kullan
+        this.blogs = response.data?.content;
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Blogları çekerken hata oluştu:', error);
+        this.toastrService.info('Blogları çekerken hata oluştu:', error);
         this.isLoading = false;
       }
     });

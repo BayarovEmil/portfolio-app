@@ -18,6 +18,7 @@ import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details
 import { OtherBlogsComponent } from './features/blogs/other-blogs/other-blogs.component';
 import { UsefulLinksComponent } from './features/useful-links/useful-links.component';
 import {HttpClientModule} from "@angular/common/http";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,16 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,  // 🔹 ƏLAVƏ OLUNMALIDIR!
     RouterModule,
     FormsModule,
-    // 🔹 ROUTER MODULU DAXİL EDİLMƏLİDİR!
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      closeButton: true,
+      newestOnTop: true,
+      tapToDismiss: true,
+      timeOut: 4000,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      }
+    )
   ],
   providers: [
     provideAnimationsAsync()

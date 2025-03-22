@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserControllerService } from '../../services/services/user-controller.service';
 import {SendMessage$Params} from "../../services/fn/user-controller/send-message";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +12,10 @@ export class ContactComponent {
   isLoading = false;  // Yüklenme durumu
   errorMessage = '';  // Hata mesajı
 
-  constructor(private userService: UserControllerService) {}
+  constructor(
+    private userService: UserControllerService,
+    private toastrService: ToastrService
+  ) {}
 
   formData = {
     name: '',
@@ -48,7 +52,7 @@ export class ContactComponent {
 
     if (invalidFields.length > 0) {
       this.highlightInvalidFields(invalidFields);
-      return; // API sorğusunu göndərmirik
+      return;
     }
 
     this.isLoading = true;
@@ -64,13 +68,13 @@ export class ContactComponent {
     this.userService.sendMessage(params).subscribe({
       next: () => {
         this.isLoading = false;
-        alert('Your consultation request has been submitted successfully.');
+        this.toastrService.success('Your consultation request has been submitted successfully.');
         this.resetForm();
       },
       error: (error) => {
-        this.isLoading = false;
-        console.error('Error sending message:', error);
         this.errorMessage = 'Failed to send message. Please try again later.';
+        this.toastrService.error(this.errorMessage);
+        this.isLoading = false;
       }
     });
   }
@@ -86,6 +90,7 @@ export class ContactComponent {
     });
 
     this.errorMessage = 'Zəhmət olmasa bütün sahələri doldurun!';
+    this.toastrService.warning(this.errorMessage);
   }
 
 
