@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'https://api.emilbayarov.software/api/v1';
+  rootUrl: string = 'https://api.bayarov.com/api/v1';
 }
 
 /**

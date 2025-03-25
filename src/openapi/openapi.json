@@ -20,6 +20,10 @@
       "description": "Production ENV"
     },
     {
+      "url": "http://api.bayarov.com/api/v1",
+      "description": "Domain ENV"
+    },
+    {
       "url": "http://localhost:8081/api/v1",
       "description": "Local ENV"
     },
@@ -694,10 +698,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "firstPage": {
+          "lastPage": {
             "type": "boolean"
           },
-          "lastPage": {
+          "firstPage": {
             "type": "boolean"
           }
         }

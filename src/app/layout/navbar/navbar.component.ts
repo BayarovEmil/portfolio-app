@@ -53,6 +53,7 @@ export class NavbarComponent {
 
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     } else {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {
