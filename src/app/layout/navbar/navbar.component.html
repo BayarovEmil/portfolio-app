@@ -41,21 +41,21 @@
       <div id="ham-menu" [ngClass]="{'open': menuOpen}" class="w-[80%] !h-screen top-[100%] left-[-100%] duration-500 bg-white absolute">
         <div class="py-5 px-2">
           <button class="bars-btn !w-full" (click)="scrollToSection('contact'); closeMenu()">
-            Contact Us
+            Əlaqə
           </button>
         </div>
         <ul>
           <li class="bars-list-elem" (click)="scrollToSection('home'); closeMenu()">
-            <span class="nav-item">Home</span>
+            <span class="nav-item">Ana səhifə</span>
           </li>
           <li class="bars-list-elem" (click)="scrollToSection('services'); closeMenu()">
-            <span class="nav-item">Services</span>
+            <span class="nav-item">Xidmətlər</span>
           </li>
 <!--          <li class="bars-list-elem" (click)="scrollToSection('blogs'); closeMenu()">-->
 <!--            <span class="nav-item">Blogs</span>-->
 <!--          </li>-->
           <li class="bars-list-elem" (click)="scrollToSection('about'); closeMenu()">
-            <span class="nav-item">About</span>
+            <span class="nav-item">Haqqımda</span>
           </li>
         </ul>
       </div>
@@ -64,12 +64,12 @@
 
     <div class=" items-center justify-center gap-5 hidden lg:flex">
       <ul class="nav-links">
-        <li><span class="nav-item" (click)="scrollToSection('home')">Home</span></li>
-        <li><span class="nav-item" (click)="scrollToSection('services')">Services</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('home')">Ana səhifə</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('services')">Xidmətlər</span></li>
 <!--        <li><span class="nav-item" (click)="scrollToSection('blogs')">Blogs</span></li>-->
-        <li><span class="nav-item" (click)="scrollToSection('about')">About</span></li>
+        <li><span class="nav-item" (click)="scrollToSection('about')">Haqqımda</span></li>
       </ul>
-      <button class="appointment-btn" (click)="scrollToSection('contact')">Contact Me</button>
+      <button class="appointment-btn" (click)="scrollToSection('contact')">Əlaqə</button>
     </div>
 
   </div>
