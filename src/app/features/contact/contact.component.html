@@ -1,17 +1,17 @@
 <section class="contact bg-[#F2F3F8]">
   <div class="container">
     <div class="contact-form w-full md:w-[50%] h-full">
-      <h3 class="!text-[45px] !mb-8 !font-extrabold text-center md:text-start ">Get Consultation</h3>
+      <h3 class="!text-[45px] !mb-8 !font-extrabold text-center md:text-start ">Əlaqə</h3>
 
       <form (submit)="submitForm()" class="contact-form">
         <div class="flex flex-col md:flex-row items-center justify-between gap-10">
           <div class="w-full md:w-[300px]">
-            <label class="block">Name <span class="text-red-500">*</span></label>
-            <input type="text" class="input-field" placeholder="Name" [(ngModel)]="formData.name" name="name" required>
+            <label class="block">Ad <span class="text-red-500">*</span></label>
+            <input type="text" class="input-field" placeholder="Ad" [(ngModel)]="formData.name" name="name" required>
           </div>
           <div class="w-full md:w-[300px]">
-            <label class="block">Phone <span class="text-red-500">*</span></label>
-            <input type="text" class="input-field" placeholder="Phone" [(ngModel)]="formData.phone" name="phone" required>
+            <label class="block">Telefon nömrəsi <span class="text-red-500">*</span></label>
+            <input type="text" class="input-field" placeholder="Telefon nömrəsi" [(ngModel)]="formData.phone" name="phone" required>
           </div>
         </div>
 
@@ -21,9 +21,9 @@
             <input type="email" class="input-field" placeholder="Email" [(ngModel)]="formData.email" name="email" required>
           </div>
           <div class="w-full md:w-[300px]">
-            <label class="block">Select Service <span class="text-red-500">*</span></label>
+            <label class="block">Xidmət seçin <span class="text-red-500">*</span></label>
             <select [(ngModel)]="formData.service" name="service" class="input-field" (change)="toggleServiceList()">
-              <option value="">Select Service</option>
+              <option value="">Xidmət seçin</option>
               <option value="Business Law">Kommersiya və Müqavilələr Hüququ</option>
               <option value="Family Law">Əqli Mülkiyyət</option>
               <option value="Civil Litigation">Miqrasiya Hüququ</option>
@@ -32,12 +32,12 @@
           </div>
         </div>
 
-        <label class="block">Message <span class="text-red-500">*</span></label>
-        <textarea class="input-field h-[200px] resize-none" placeholder="Message" [(ngModel)]="formData.message" name="message" required></textarea>
+        <label class="block">Mesaj yazın: <span class="text-red-500">*</span></label>
+        <textarea class="input-field h-[200px] resize-none" placeholder="Mesaj yazın: " [(ngModel)]="formData.message" name="message" required></textarea>
 
         <p *ngIf="errorMessage" class="text-red-500 text-sm">{{ errorMessage }}</p>
 
-        <button class="cta-button" type="submit">Request a Consultation</button>
+        <button class="cta-button" type="submit">Göndər</button>
       </form>
 
     </div>
