@@ -75,3 +75,10 @@
     width: 100%;
   }
 }
+
+.custom-img-size {
+  width: 472px;
+  height: 753px;
+  object-fit: contain;
+}
+
