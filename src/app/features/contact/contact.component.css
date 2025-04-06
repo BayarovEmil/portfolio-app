@@ -65,7 +65,7 @@
     flex-direction: column;
   }
 
-  .contact-image {
+  .custom-img-size {
     display: none;
   }
 
@@ -74,11 +74,5 @@
   .contact-form textarea {
     width: 100%;
   }
-}
-
-.custom-img-size {
-  width: 472px;
-  height: 753px;
-  object-fit: contain;
 }
 
