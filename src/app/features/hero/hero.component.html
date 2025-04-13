@@ -1,29 +1,41 @@
-<div class="hero">
-  <div class="hero-background" [ngStyle]="{'background-image': 'url(' + currentBackground + ')'}">
-    <div class="overlay"></div>
+<!-- Hero Section -->
+<div class="relative h-screen flex items-center justify-center bg-black font-sans">
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 bg-cover bg-center z-0"
+    [ngStyle]="{'background-image': 'url(' + currentBackground + ')'}">
   </div>
 
-  <div class="hero-content">
-<!--    <button (click)="prevSlide()" class="nav-button left" aria-label="Previous slide">-->
-<!--      <i class="fas fa-chevron-left"></i>-->
-<!--    </button>-->
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/30 z-10"></div>
 
-    <div class="text-container">
-      <div class="liner">
-        <span class="line"></span>
-        <h3 class="subheading">We Offer</h3>
-        <span class="line"></span>
-      </div>
-      <h1 class="headline ">Effective and Reliable Legal Support</h1>
-      <p class="description hidden lg:block">
-        We provide professional consulting and tailored legal solutions to protect your rights and interests.      </p>
-      <button class="cta-button" (click)="scrollToSection('contact')">
-        &nbsp;Müraciət et
-      </button>
+  <!-- Hero Content -->
+  <div class="relative z-20 text-white text-center px-6 lg:px-20 max-w-5xl space-y-6 animate-fade-in-slow">
+
+    <!-- Animated Subheading -->
+    <div class="flex items-center justify-center space-x-4 opacity-0 animate-slide-in-down animation-delay-500">
+      <span class="w-16 h-1 bg-white"></span>
+      <h3 class="text-xl lg:text-2xl font-semibold uppercase tracking-[0.2em] text-gradient animate-text">
+        We Offer
+      </h3>
+      <span class="w-16 h-1 bg-white"></span>
     </div>
 
-<!--    <button (click)="nextSlide()" class="nav-button right" aria-label="Next slide">-->
-<!--      <i class="fas fa-chevron-right"></i>-->
-<!--    </button>-->
+    <!-- Main Headline -->
+    <h1 class="text-4xl lg:text-6xl font-bold leading-tight animate-pulse-gradient">
+      Effective and Reliable Legal Support
+    </h1>
+
+    <!-- Description -->
+    <p class="text-base lg:text-xl text-gray-300 tracking-wide px-4">
+      We provide professional consulting and tailored legal solutions to protect your rights and interests.
+    </p>
+
+    <!-- CTA Button -->
+    <button
+      class="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg uppercase tracking-wide hover:scale-105 hover:shadow-glow transition-all duration-300 ease-in-out"
+      (click)="scrollToSection('contact')">
+      Müraciət et
+    </button>
   </div>
 </div>

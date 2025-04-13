@@ -1,121 +1,173 @@
+/* ==================================================
+   🧱 Hero Bölməsi Ana Konteyneri
+   Hero-nun arxa fonu, overlay və əsas yerləşimini təyin edir
+================================================== */
 .hero {
   position: relative;
   width: 100%;
-  height: 80vh !important; /* Hero bölməsini kiçilt */
+  height: 80vh !important; /* İstəyə uyğun Tailwind ilə əvəz oluna bilər */
   overflow: hidden;
-  background: #0C1B33; /* Şəkildəki tünd göy fon */
-
-  .hero-background {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background-image 0.5s ease-in-out;
-    filter: brightness(0.8); /* Şəkili bir qədər tünd etmək üçün */
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(12, 27, 51, 0.7); /* Tünd göy overlay */
-  }
-
-  .hero-content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 2;
-  }
-
-  .subheading {
-    position: relative;
-    font-size: 2.2em;
-    color: #D4B062;
-    font-weight: bold;
-    font-family: sans;
-    margin-bottom: 10px;
-  }
-
-  .headline {
-    font-size: 2em;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: sans;
-  }
-
-  .liner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-  .line{
-    margin-bottom: 10px;
-    background-color: #5D5D68;
-    height: 1px;
-    width: 50px;
-  }
-  .description {
-    line-height: 1.2;
-    max-width: 650px;
-    font-size: 1.375em;
-    color: white;
-    font-family: sans;
-    margin-top: 20px;
-  }
-
-  .cta-button {
-    margin-top: 40px;
-    padding: 18px 30px !important;
-    border: 2px solid #D4B062;
-    background: transparent;
-    color: white;
-    font-size: 18px;
-    font-family: "Lato", Helvetica, Arial, sans-serif;;
-    cursor: pointer;
-    transition: all 0.3s;
-    &:hover {
-      background: #D4B062;
-    }
-  }
-
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 32px;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #D4B062;
-    }
-  }
-
-  .left {
-    left: 20px;
-  }
-
-  .right {
-    right: 20px;
-  }
+  background: #0C1B33; /* Tünd göy ton, peşəkar görünüş üçün */
 }
 
-/* Mobil uyğunluq */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+  filter: brightness(0.8); /* Arxa fonu azca tündləşdirir */
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 27, 51, 0.7); /* Qaranlıq overlay oxunurluq üçün */
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+/* ==================================================
+   ✍️ Hero Mətn Stiləri
+   Başlıqlar, alt başlıq, təsvir mətni
+================================================== */
+.subheading {
+  font-size: 2.2em;
+  color: #D4B062; /* Qızılı vurğu rəngi */
+  font-weight: bold;
+  font-family: sans-serif; /* Düzəliş: "sans" yox, "sans-serif" */
+  margin-bottom: 10px;
+}
+
+.headline {
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+}
+
+.liner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.line {
+  margin-bottom: 10px;
+  background-color: #5D5D68;
+  height: 1px;
+  width: 50px;
+}
+
+.description {
+  line-height: 1.2;
+  max-width: 650px;
+  font-size: 1.375em;
+  color: white;
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+
+/* ==================================================
+   🔘 CTA Düyməsi və Hover Effekti
+================================================== */
+.cta-button {
+  margin-top: 40px;
+  padding: 18px 30px;
+  border: 2px solid #D4B062;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #D4B062;
+}
+
+/* ==================================================
+   ⬅️➡️ Slider Naviqasiya Düymələri
+================================================== */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-button:hover {
+  color: #D4B062;
+}
+
+.left { left: 20px; }
+.right { right: 20px; }
+
+/* ==================================================
+   📱 Responsiv Uyğunluq
+================================================== */
 @media (min-width: 768px) {
-  .hero {height: 60vh;}
-  .description {font-size: 16px;}
-  .headline {font-size: 3.125em !important;}
+  .hero { height: 60vh; }
+  .description { font-size: 16px; }
+  .headline { font-size: 3.125em; }
   .cta-button {
     font-size: 14px;
     padding: 10px 20px;
   }
+}
+
+
+/* 🌀 Hero Entry Animations */
+@keyframes slideInDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 1s ease forwards;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInSlow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-slow {
+  animation: fadeInSlow 2s ease-in-out forwards;
+}
+
+@keyframes pulseGradient {
+  0% { color: #facc15; }
+  50% { color: #ef4444; }
+  100% { color: #3b82f6; }
+}
+
+.animate-pulse-gradient {
+  animation: pulseGradient 4s infinite alternate;
+}
+
+/* ✨ Hero Button Hover */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
