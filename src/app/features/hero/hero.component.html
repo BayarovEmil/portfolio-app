@@ -1,41 +1,65 @@
-<!-- Hero Section -->
-<div class="relative h-screen flex items-center justify-center bg-black font-sans">
-  <!-- Background Image -->
+<section class="hero" role="banner">
+  <!-- Slider Background -->
   <div
-    class="absolute inset-0 bg-cover bg-center z-0"
-    [ngStyle]="{'background-image': 'url(' + currentBackground + ')'}">
-  </div>
+    class="hero__background"
+    [ngStyle]="{ 'background-image': 'url(' + currentBackground + ')' }"
+  ></div>
+  <div class="hero__overlay"></div>
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/30 z-10"></div>
-
-  <!-- Hero Content -->
-  <div class="relative z-20 text-white text-center px-6 lg:px-20 max-w-5xl space-y-6 animate-fade-in-slow">
-
-    <!-- Animated Subheading -->
-    <div class="flex items-center justify-center space-x-4 opacity-0 animate-slide-in-down animation-delay-500">
-      <span class="w-16 h-1 bg-white"></span>
-      <h3 class="text-xl lg:text-2xl font-semibold uppercase tracking-[0.2em] text-gradient animate-text">
-        We Offer
-      </h3>
-      <span class="w-16 h-1 bg-white"></span>
+  <!-- Content -->
+  <div class="hero__content">
+    <div class="hero__subheading">
+      <span class="hero__line"></span>
+      <span>Hüquqi Məsləhətlər</span>
+      <span class="hero__line"></span>
     </div>
 
-    <!-- Main Headline -->
-    <h1 class="text-4xl lg:text-6xl font-bold leading-tight animate-pulse-gradient">
-      Effective and Reliable Legal Support
+    <h1 class="hero__title">
+      Etibarlı və Effektiv<br />
+      Hüquqi Dəstək
     </h1>
 
-    <!-- Description -->
-    <p class="text-base lg:text-xl text-gray-300 tracking-wide px-4">
-      We provide professional consulting and tailored legal solutions to protect your rights and interests.
+    <p class="hero__description">
+      Hər bir müştəriyə fərdi yanaşma ilə hüquqlarınızı qorumağa və
+      maraqlarınızı təmin etməyə kömək edirik.
     </p>
 
-    <!-- CTA Button -->
-    <button
-      class="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg uppercase tracking-wide hover:scale-105 hover:shadow-glow transition-all duration-300 ease-in-out"
-      (click)="scrollToSection('contact')">
-      Müraciət et
+    <button class="hero__cta" (click)="scrollToSection('contact')">
+      Müraciət Et
+      <svg
+        class="hero__cta-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+      >
+        <path
+          d="M10 0L8.59 1.41 16.17 9H0v2h16.17l-7.58 7.59L10 20l10-10z"
+        />
+      </svg>
     </button>
   </div>
-</div>
+
+  <!-- Slider Nav -->
+  <button
+    class="hero__nav hero__nav--prev"
+    aria-label="Previous slide"
+    (click)="prevSlide()"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path
+        d="M12.41 16.59L11 18l-8-8 8-8 1.41 1.41L6.83 10z"
+      />
+    </svg>
+  </button>
+  <button
+    class="hero__nav hero__nav--next"
+    aria-label="Next slide"
+    (click)="nextSlide()"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path
+        d="M7.59 3.41L9 2l8 8-8 8-1.41-1.41L13.17 10z"
+      />
+    </svg>
+  </button>
+</section>

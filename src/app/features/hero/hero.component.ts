@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeroComponent {
   slides: string[] = [
-    'assets/law-expert-bg1.jpg',  // Tünd göy rəngli fon
-    'assets/law-expert-bg2.jpg'   // Alternativ slayd
+    'assets/images/commertion-law.jpg',  // Tünd göy rəngli fon
+    'assets/images/corporative-law.jpg'   // Alternativ slayd
   ];
   currentIndex: number = 0;
   currentBackground: string = this.slides[this.currentIndex];
